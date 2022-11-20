@@ -24,7 +24,7 @@ export const gamesData = [
     description:
       "Se escribe un número de 4 dígitos sin repetición, conocido únicamente por una persona quien será el “Host”, el resto debe proponer números hasta encontrar el correcto. Si es que un número propuesto presenta un dígito correcto pero en una posición incorrecta, esto se considera un toque, en cambio, si es que la posición es la correcta, entonces se trata de una fama.",
     objectives: "Estrategia, desarrollo intelectual, (si es que se juega en equipo:) comunicación.",
-    imgUrl: "",
+    imgUrl: "https://bitacoras-ljyr.s3.amazonaws.com/Im%C3%A1genes/toque_y_fama.png",
     date: "10/08/2022",
   },
   {

@@ -21,6 +21,22 @@ export default function Home() {
             return <GameCard data={game} />
           })}
         </div>
+
+        <div className="flex gap-7 md:gap-10 my-5 lg:my-8">
+          <button 
+            className="rounded-md bg-indigo-700 hover:bg-indigo-800 text-white text-sm 
+            md:text-base px-3 md:px-5 py-2 md:py-3"
+          >
+            Página anterior
+          </button>
+
+          <button 
+            className="rounded-md bg-indigo-700 hover:bg-indigo-800 text-white text-sm 
+            md:text-base px-3 md:px-5 py-2 md:py-3"
+          >
+            Página siguiente
+          </button>
+        </div>
       </main>
     </>
   )
