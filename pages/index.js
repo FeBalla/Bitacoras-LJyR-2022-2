@@ -11,8 +11,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex flex-col justify-center items-center p-4 sm:p-5">
-        <h1 className="text-center text-2xl my-5 font-semibold">
+      <main className="flex flex-col justify-center items-center p-4 lg:px-20 sm:p-5">
+        <h1 className="text-center text-2xl lg:text-3xl my-5 font-semibold">
           Bitácoras - Liderazgo, Juegos y Recreación
         </h1>
 

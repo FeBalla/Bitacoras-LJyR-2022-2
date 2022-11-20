@@ -20,6 +20,7 @@ export default function ImageWithFallback({ src }) {
       objectFit="cover"
       objectPosition="center"
       alt="Imagen del juego"
+      className="bg-gray-100"
       onError={() => {
         setImgSrc(fallbackSrc)
       }}

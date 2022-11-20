@@ -9,17 +9,17 @@ export default function GameCard({ data }) {
 
       <div className="text-center">
         <h1 className="font-semibold text-xl">{data.name}</h1>
-        <span className="italic text-xs sm:text-sm">Clase del {data.date}</span>
+        <span className="italic text-xs sm:text-sm text-gray-600">Clase del {data.date}</span>
       </div>
 
       <div>
         <h2 className="font-semibold text-lg mb-0.5">Descripción</h2>
-        <p>{data.description}</p>
+        <p className="text-sm md:text-base">{data.description}</p>
       </div>
 
       <div>
         <h2 className="font-semibold text-lg mb-0.5">Objetivos</h2>
-        <p>{data.objectives}</p>
+        <p className="text-sm md:text-base">{data.objectives}</p>
       </div>
     </div>
   )
