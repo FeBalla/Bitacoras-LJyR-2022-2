@@ -24,12 +24,12 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {gamesData.map((game) => {
-            return <GameCard data={game} />
+            return <GameCard key={game.id} data={game} />
           })}
         </div>
 
         <div className="flex gap-7 md:gap-10 my-5 lg:my-8">
-          <button 
+          <button
             className="rounded-md bg-cyan-700 hover:bg-cyan-800 text-white text-sm 
             md:text-base px-3 md:px-5 py-2 md:py-3 disabled:opacity-40 disabled:pointer-events-none"
             disabled={page <= 1}
@@ -37,7 +37,7 @@ export default function Home() {
             Página anterior
           </button>
 
-          <button 
+          <button
             className="rounded-md bg-cyan-700 hover:bg-cyan-800 text-white text-sm 
             md:text-base px-3 md:px-5 py-2 md:py-3 disabled:opacity-40 disabled:pointer-events-none"
           >
