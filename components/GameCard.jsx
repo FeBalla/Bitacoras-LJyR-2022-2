@@ -1,6 +1,6 @@
 import ImageWithFallback from "./ImageWithFallback"
 
-export default function GameCard({ data }) {
+const GameCard = ({ data }) => {
   return (
     <div className="flex flex-col rounded-md gap-2 border p-3">
       <div className="w-full h-52 relative">
@@ -24,3 +24,5 @@ export default function GameCard({ data }) {
     </div>
   )
 }
+
+export default GameCard

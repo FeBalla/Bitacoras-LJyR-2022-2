@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-export default function NavBar() {
+const NavBar = () => {
   return (
     <header
       className="flex w-full sticky top-0 z-50 justify-center md:justify-end shadow-md px-5 py-3 
@@ -18,3 +18,5 @@ export default function NavBar() {
     </header>
   )
 }
+
+export default NavBar

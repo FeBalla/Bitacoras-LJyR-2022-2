@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 
-export default function ImageWithFallback({ src }) {
+const ImageWithFallback = ({ src, ...props }) => {
   const fallbackSrc = "/image_placeholder.jpg"
   const [imgSrc, setImgSrc] = useState(fallbackSrc)
 
@@ -24,6 +24,9 @@ export default function ImageWithFallback({ src }) {
       onError={() => {
         setImgSrc(fallbackSrc)
       }}
+      {...props}
     />
   )
 }
+
+export default ImageWithFallback
