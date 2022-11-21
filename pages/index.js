@@ -64,7 +64,7 @@ export default function Home() {
             Bitácoras - Liderazgo, Juegos y Recreación
           </h1>
           <h3 className="italic">
-            (Página {page + 1} de {maxPage})
+            (Página {page + 1} de {maxPage + 1})
           </h3>
         </div>
 
