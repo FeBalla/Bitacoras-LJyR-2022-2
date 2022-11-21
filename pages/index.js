@@ -1,10 +1,11 @@
 import Head from "next/head"
 import { useState, useEffect } from "react"
 import GameCard from "../components/GameCard"
+import PrimaryButton from "../components/PrimaryButton"
 import gamesData from "../data/gamesData.json"
 
 export default function Home() {
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState(0)
   const [startGame, setStartGame] = useState(0)
   const [endGame, setEndGame] = useState(6)
   const maxPage = Math.floor(gamesData.length / 6)
@@ -38,6 +39,14 @@ export default function Home() {
     }
   }
 
+  const handlePageInput = (event) => {
+    const { value } = event.target
+    if (value > 0 && value <= maxPage) {
+      setPage(value - 1)
+      scrollToTop()
+    }
+  }
+
   return (
     <>
       <Head>
@@ -52,8 +61,18 @@ export default function Home() {
             Bitácoras - Liderazgo, Juegos y Recreación
           </h1>
           <h3 className="italic">
-            (Página {page} de {maxPage})
+            (Página {page + 1} de {maxPage})
           </h3>
+        </div>
+
+        <div className="flex gap-7 md:gap-10 my-5 lg:my-8">
+          <PrimaryButton disabled={page < 1} onClick={decreasePage}>
+            Página anterior
+          </PrimaryButton>
+          
+          <PrimaryButton disabled={page >= maxPage} onClick={increasePage}>
+            Página siguiente
+          </PrimaryButton>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -63,23 +82,29 @@ export default function Home() {
         </div>
 
         <div className="flex gap-7 md:gap-10 my-5 lg:my-8">
-          <button
-            className="rounded-md bg-blue-700 hover:bg-blue-800 text-white text-sm 
-            md:text-base px-3 md:px-5 py-2 md:py-3 disabled:opacity-40 disabled:pointer-events-none"
-            disabled={page <= 1}
-            onClick={decreasePage}
-          >
+          <PrimaryButton disabled={page < 1} onClick={decreasePage}>
             Página anterior
-          </button>
+          </PrimaryButton>
 
-          <button
-            className="rounded-md bg-blue-700 hover:bg-blue-800 text-white text-sm 
-            md:text-base px-3 md:px-5 py-2 md:py-3 disabled:opacity-40 disabled:pointer-events-none"
-            disabled={page >= maxPage}
-            onClick={increasePage}
-          >
+          <input
+            type="number"
+            className="hidden md:inline-block border outline-none px-1 text-center rounded-md w-min"
+            min="1"
+            max={maxPage}
+            value={page + 1}
+            onChange={(event) => handlePageInput(event)}
+          />
+
+          <PrimaryButton disabled={page >= maxPage} onClick={increasePage}>
             Página siguiente
-          </button>
+          </PrimaryButton>
+        </div>
+
+        <div className="flex flex-col text-center text-xs md:text-sm gap-1">
+          <h4>
+            Hecho con 💜 para el curso Liderazgo, Juegos y Recreación - Sección 3 (2022-2)
+          </h4>
+          <h5>Fernando Balladares - Martín Orrego - Sebastián Breguel</h5>
         </div>
       </main>
     </>
