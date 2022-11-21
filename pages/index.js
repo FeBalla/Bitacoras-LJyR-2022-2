@@ -1,6 +1,8 @@
 import Head from "next/head"
 import { useState, useEffect } from "react"
+import Footer from "../components/Footer"
 import GameCard from "../components/GameCard"
+import NavBar from "../components/NavBar"
 import PrimaryButton from "../components/PrimaryButton"
 import gamesData from "../data/gamesData.json"
 
@@ -9,7 +11,6 @@ export default function Home() {
   const [startGame, setStartGame] = useState(0)
   const [endGame, setEndGame] = useState(6)
   const maxPage = Math.floor(gamesData.length / 6)
-  console.log(gamesData.length)
 
   useEffect(() => {
     const newStartGame = Math.min(6 * page, gamesData.length - 1)
@@ -54,6 +55,8 @@ export default function Home() {
         <meta name="description" content="Bitácoras - Liderazgo, Juegos y Recreación" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <NavBar />
 
       <main className="flex flex-col justify-center items-center p-4 lg:px-20 sm:p-5">
         <div className="flex flex-col text-center my-5 gap-2">
@@ -100,10 +103,7 @@ export default function Home() {
           </PrimaryButton>
         </div>
 
-        <div className="flex flex-col text-center text-xs md:text-sm gap-1">
-          <h4>Hecho con 💜 para el curso Liderazgo, Juegos y Recreación - Sección 3 (2022-2)</h4>
-          <h5>Fernando Balladares - Martín Orrego - Sebastián Breguel</h5>
-        </div>
+        <Footer />
       </main>
     </>
   )
