@@ -17,15 +17,24 @@ export default function Home() {
     setEndGame(newEndGame)
   }, [page])
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
+  }
+
   const decreasePage = () => {
     if (page > 0) {
       setPage(page - 1)
+      scrollToTop()
     }
   }
 
   const increasePage = () => {
     if (page < maxPage) {
       setPage(page + 1)
+      scrollToTop()
     }
   }
 
@@ -42,7 +51,9 @@ export default function Home() {
           <h1 className="text-2xl lg:text-3xl font-semibold text-gray-900">
             Bitácoras - Liderazgo, Juegos y Recreación
           </h1>
-          <h3 className="italic">(Página {page} de {maxPage})</h3>
+          <h3 className="italic">
+            (Página {page} de {maxPage})
+          </h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
