@@ -13,8 +13,8 @@ export default function Home() {
   const maxPage = Math.floor(gamesData?.length / 6)
 
   useEffect(() => {
-    const newStartGame = Math.min(6 * page, gamesData.length - 1)
-    const newEndGame = Math.min(newStartGame + 6, gamesData.length - 1)
+    const newStartGame = Math.min(6 * page, gamesData?.length - 1)
+    const newEndGame = Math.min(newStartGame + 6, gamesData?.length - 1)
     setStartGame(newStartGame)
     setEndGame(newEndGame)
   }, [page])
