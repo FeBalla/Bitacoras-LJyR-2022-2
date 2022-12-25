@@ -1,4 +1,4 @@
-export type DoubleQuotesIconProps = {
+type DoubleQuotesIconProps = {
   width: number
   height: number
 }

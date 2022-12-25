@@ -1,7 +1,7 @@
 import DoubleQuotesIcon from "./DoubleQuotesIcon"
 import ImageWithFallback from "./ImageWithFallback"
 
-export type ReflectionCardProps = {
+type ReflectionCardProps = {
   name: string
   reflection: string
   imgUrl: string
