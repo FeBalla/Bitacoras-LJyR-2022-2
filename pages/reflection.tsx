@@ -11,7 +11,8 @@ const Home = () => {
         <title>Reflexiones - Liderazgo, Juegos y Recreación</title>
         <meta
           name="description"
-          content="Reflexiones de las bitácoras del curso Liderazgo, Juegos y Recreación, del semestre 2022-2"
+          content="Reflexiones de las bitácoras del curso Liderazgo, Juegos y Recreación, del 
+          semestre 2022-2"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
