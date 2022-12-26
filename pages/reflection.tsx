@@ -4,12 +4,16 @@ import NavBar from "../components/NavBar"
 import ReflectionCard from "../components/ReflectionCard"
 import reflectionsData from "../data/reflectionsData.json"
 
-export default function Home() {
+const Home = () => {
   return (
     <>
       <Head>
-        <title>Reflexión - Liderazgo, Juegos y Recreación</title>
-        <meta name="description" content="Bitácoras - Liderazgo, Juegos y Recreación" />
+        <title>Reflexiones - Liderazgo, Juegos y Recreación</title>
+        <meta
+          name="description"
+          content="Reflexiones de las bitácoras del curso Liderazgo, Juegos y Recreación, del 
+          semestre 2022-2"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -18,7 +22,14 @@ export default function Home() {
       <main className="flex flex-col justify-center items-center p-4 lg:px-20 sm:p-5 my-5">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {reflectionsData.map((reflection) => {
-            return <ReflectionCard key={reflection.id} data={reflection} />
+            return (
+              <ReflectionCard
+                key={reflection.id}
+                name={reflection.name}
+                reflection={reflection.reflection}
+                imgUrl={reflection.imgUrl}
+              />
+            )
           })}
         </div>
 
@@ -27,3 +38,5 @@ export default function Home() {
     </>
   )
 }
+
+export default Home
