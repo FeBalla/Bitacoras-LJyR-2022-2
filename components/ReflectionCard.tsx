@@ -15,10 +15,11 @@ const ReflectionCard = ({ name, reflection, imgUrl }: ReflectionCardProps) => {
       </div>
 
       <div className="w-40 md:w-52 relative rounded-full aspect-square">
-        <ImageWithFallback 
-        src={imgUrl}
-        alt={`Imagen del autor ${name}`}
-        style="rounded-full aspect-square shadow-lg" />
+        <ImageWithFallback
+          src={imgUrl}
+          alt={`Imagen del autor ${name}`}
+          style="rounded-full aspect-square shadow-lg"
+        />
       </div>
 
       <h2 className="text-center font-semibold text-xl">{name}</h2>
