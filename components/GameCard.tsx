@@ -14,7 +14,7 @@ const GameCard = ({ data }: GameCardProps) => {
   return (
     <div className="flex flex-col rounded-md gap-2 border p-3">
       <div className="w-full h-52 relative">
-        <ImageWithFallback src={data.imgUrl} />
+        <ImageWithFallback src={data.imgUrl} alt={`Imagen del juego ${data.name}`} />
       </div>
 
       <div className="text-center">
