@@ -1,0 +1,23 @@
+overwrite: true
+schema: ${NEXT_PUBLIC_GRAPHQL_ENDPOINT}
+documents: "graphql/*.graphql"
+
+generates:
+  __generated__/index.ts:
+    plugins:
+      - add:
+          content: "// THIS IS A GENERATED FILE, use `npm run graphql:codegen` to regenerate"
+      - add:
+          content: "/* eslint-disable */"
+
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+
+    config:
+      reactApolloVersion: 3
+      withHooks: true
+
+  __generated__/graphql.schema.json:
+    plugins:
+      - introspection
