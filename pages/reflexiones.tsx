@@ -44,9 +44,8 @@ const Home = () => {
             })}
           </div>
         )}
-
-        <Footer />
       </main>
+      <Footer />
     </>
   )
 }

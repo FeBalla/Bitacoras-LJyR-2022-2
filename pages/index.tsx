@@ -57,9 +57,8 @@ export default function Home() {
             <PageNavigator pageInfo={data.gamesConnection.pageInfo} router={router} />
           </section>
         )}
-
-        <Footer />
       </main>
+      <Footer />
     </>
   )
 }
