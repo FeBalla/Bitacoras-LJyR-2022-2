@@ -13,5 +13,8 @@
     "no-console": "warn",
     "max-len": ["error", { "code": 100 }],
     "semi": ["error", "never"]
+  },
+  "globals": {
+    "JSX": "readonly"
   }
 }

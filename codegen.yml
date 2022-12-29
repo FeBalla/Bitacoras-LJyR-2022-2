@@ -1,9 +1,9 @@
 overwrite: true
 schema: ${NEXT_PUBLIC_GRAPHQL_ENDPOINT}
-documents: "graphql/*.graphql"
+documents: "graphql/queries/*.graphql"
 
 generates:
-  __generated__/index.ts:
+  graphql/generated/index.ts:
     plugins:
       - add:
           content: "// THIS IS A GENERATED FILE, use `npm run graphql:codegen` to regenerate"
@@ -18,6 +18,6 @@ generates:
       reactApolloVersion: 3
       withHooks: true
 
-  __generated__/graphql.schema.json:
+  graphql/generated/graphql.schema.json:
     plugins:
       - introspection
