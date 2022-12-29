@@ -4926,17 +4926,18 @@ export enum _SystemDateTimeFieldVariation {
 export type GamesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GamesQuery = { __typename?: 'Query', games: Array<{ __typename?: 'Game', name: string, description: string, objectives: string, imgUrl: string }> };
+export type GamesQuery = { __typename?: 'Query', games: Array<{ __typename?: 'Game', id: string, name: string, description: string, objectives: string, imgUrl: string }> };
 
 export type ReflectionsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ReflectionsQuery = { __typename?: 'Query', reflections: Array<{ __typename?: 'Reflection', body: string, author?: { __typename?: 'Author', name: string, imgUrl: string } | null }> };
+export type ReflectionsQuery = { __typename?: 'Query', reflections: Array<{ __typename?: 'Reflection', id: string, body: string, author?: { __typename?: 'Author', name: string, imgUrl: string } | null }> };
 
 
 export const GamesDocument = gql`
     query Games {
   games {
+    id
     name
     description
     objectives
@@ -4974,6 +4975,7 @@ export type GamesQueryResult = Apollo.QueryResult<GamesQuery, GamesQueryVariable
 export const ReflectionsDocument = gql`
     query Reflections {
   reflections {
+    id
     body
     author {
       name

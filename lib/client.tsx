@@ -10,11 +10,7 @@ type GraphQLClientProviderProps = {
 }
 
 const GraphQLClientProvider = ({ children }: GraphQLClientProviderProps) => {
-  return (
-    <ApolloProvider client={client}>
-      {children}
-    </ApolloProvider>
-  )
+  return <ApolloProvider client={client}>{children}</ApolloProvider>
 }
 
 export default GraphQLClientProvider
