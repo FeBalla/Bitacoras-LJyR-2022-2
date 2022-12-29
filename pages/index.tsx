@@ -2,12 +2,18 @@ import Head from "next/head"
 import Footer from "../components/Footer"
 import GameCard from "../components/GameCard"
 import NavBar from "../components/NavBar"
-import PrimaryButton from "../components/PrimaryButton"
 import { useGamesQuery } from "../graphql/generated"
 import LoadingSpinner from "../components/LoadingSpinner"
+import usePage from "../hooks/usePage"
+import PageNavigator from "../components/PageNavigator"
+import { useRouter } from "next/router"
 
 export default function Home() {
-  const { data, loading, error } = useGamesQuery()
+  const router = useRouter()
+  const [currentPage, gamesPerPage, currentGamesToSkip] = usePage(router)
+  const { data, loading, error } = useGamesQuery({
+    variables: { first: gamesPerPage, skip: currentGamesToSkip },
+  })
 
   if (loading) {
     return (
@@ -36,28 +42,19 @@ export default function Home() {
           <h1 className="text-2xl lg:text-3xl font-semibold text-gray-900">
             Bitácoras - Liderazgo, Juegos y Recreación
           </h1>
-          <h3 className="italic">
-            (Página)
-          </h3>
+
+          <h4 className="italic">Página {currentPage}</h4>
         </div>
 
         {data && (
           <section className="flex flex-col items-center">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {data.games.map(game => {
+              {data.games.map((game) => {
                 return <GameCard key={game.id} game={game} />
               })}
             </div>
 
-            <div className="flex gap-7 md:gap-10 my-5 lg:my-8">
-              <PrimaryButton>
-                Página anterior
-              </PrimaryButton>
-
-              <PrimaryButton>
-                Página siguiente
-              </PrimaryButton>
-            </div>
+            <PageNavigator pageInfo={data.gamesConnection.pageInfo} router={router} />
           </section>
         )}
 

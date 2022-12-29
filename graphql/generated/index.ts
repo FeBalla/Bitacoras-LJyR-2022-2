@@ -4923,10 +4923,13 @@ export enum _SystemDateTimeFieldVariation {
   Localization = 'localization'
 }
 
-export type GamesQueryVariables = Exact<{ [key: string]: never; }>;
+export type GamesQueryVariables = Exact<{
+  first?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+}>;
 
 
-export type GamesQuery = { __typename?: 'Query', games: Array<{ __typename?: 'Game', id: string, name: string, description: string, objectives: string, imgUrl: string }> };
+export type GamesQuery = { __typename?: 'Query', games: Array<{ __typename?: 'Game', id: string, name: string, description: string, objectives: string, imgUrl: string }>, gamesConnection: { __typename?: 'GameConnection', pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean } } };
 
 export type ReflectionsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -4935,13 +4938,19 @@ export type ReflectionsQuery = { __typename?: 'Query', reflections: Array<{ __ty
 
 
 export const GamesDocument = gql`
-    query Games {
-  games {
+    query Games($first: Int, $skip: Int) {
+  games(first: $first, skip: $skip) {
     id
     name
     description
     objectives
     imgUrl
+  }
+  gamesConnection(first: $first, skip: $skip) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+    }
   }
 }
     `;
@@ -4958,6 +4967,8 @@ export const GamesDocument = gql`
  * @example
  * const { data, loading, error } = useGamesQuery({
  *   variables: {
+ *      first: // value for 'first'
+ *      skip: // value for 'skip'
  *   },
  * });
  */

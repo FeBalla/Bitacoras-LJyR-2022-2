@@ -1,9 +1,15 @@
-query Games {
-  games {
+query Games($first: Int, $skip: Int) {
+  games(first: $first, skip: $skip) {
     id
     name
     description
     objectives
     imgUrl
+  }
+  gamesConnection(first: $first, skip: $skip) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+    }
   }
 }
