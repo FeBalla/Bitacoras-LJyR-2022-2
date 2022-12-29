@@ -1,14 +1,25 @@
 import Head from "next/head"
-import { useState, useEffect } from "react"
 import Footer from "../components/Footer"
 import GameCard from "../components/GameCard"
 import NavBar from "../components/NavBar"
 import PrimaryButton from "../components/PrimaryButton"
-import gamesData from "../data/gamesData.json"
 import { useGamesQuery } from "../graphql/generated"
+import LoadingSpinner from "../components/LoadingSpinner"
 
 export default function Home() {
   const { data, loading, error } = useGamesQuery()
+
+  if (loading) {
+    return (
+      <div className="grid h-screen place-items-center">
+        <LoadingSpinner />
+      </div>
+    )
+  }
+
+  if (error) {
+    return <h2>Algo salió mal</h2>
+  }
 
   return (
     <>
