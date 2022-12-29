@@ -5,48 +5,10 @@ import GameCard from "../components/GameCard"
 import NavBar from "../components/NavBar"
 import PrimaryButton from "../components/PrimaryButton"
 import gamesData from "../data/gamesData.json"
+import { useGamesQuery } from "../graphql/generated"
 
 export default function Home() {
-  const [page, setPage] = useState<number>(0)
-  const [startGame, setStartGame] = useState<number>(0)
-  const [endGame, setEndGame] = useState<number>(6)
-  const maxPage: number = Math.floor(gamesData?.length / 6)
-
-  useEffect(() => {
-    const newStartGame: number = Math.min(6 * page, gamesData?.length - 1)
-    const newEndGame: number = Math.min(newStartGame + 6, gamesData?.length - 1)
-    setStartGame(newStartGame)
-    setEndGame(newEndGame)
-  }, [page])
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    })
-  }
-
-  const decreasePage = () => {
-    if (page > 0) {
-      setPage(page - 1)
-      scrollToTop()
-    }
-  }
-
-  const increasePage = () => {
-    if (page < maxPage) {
-      setPage(page + 1)
-      scrollToTop()
-    }
-  }
-
-  const handlePageInput = (event) => {
-    const { value } = event.target
-    if (value > 0 && value <= maxPage) {
-      setPage(value - 1)
-      scrollToTop()
-    }
-  }
+  const { data, loading, error } = useGamesQuery()
 
   return (
     <>
@@ -64,44 +26,29 @@ export default function Home() {
             Bitácoras - Liderazgo, Juegos y Recreación
           </h1>
           <h3 className="italic">
-            (Página {page + 1} de {maxPage + 1})
+            (Página)
           </h3>
         </div>
 
-        <div className="flex gap-7 md:gap-10 my-5 lg:my-8">
-          <PrimaryButton disabled={page < 1} onClick={decreasePage}>
-            Página anterior
-          </PrimaryButton>
+        {data && (
+          <section className="flex flex-col items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {data.games.map(game => {
+                return <GameCard key={game.id} game={game} />
+              })}
+            </div>
 
-          <PrimaryButton disabled={page >= maxPage} onClick={increasePage}>
-            Página siguiente
-          </PrimaryButton>
-        </div>
+            <div className="flex gap-7 md:gap-10 my-5 lg:my-8">
+              <PrimaryButton>
+                Página anterior
+              </PrimaryButton>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {gamesData.slice(startGame, endGame).map((game) => {
-            return <GameCard key={game.id} data={game} />
-          })}
-        </div>
-
-        <div className="flex gap-7 md:gap-10 my-5 lg:my-8">
-          <PrimaryButton disabled={page < 1} onClick={decreasePage}>
-            Página anterior
-          </PrimaryButton>
-
-          <input
-            type="number"
-            className="hidden md:inline-block border outline-none px-1 text-center rounded-md w-min"
-            min="1"
-            max={maxPage}
-            value={page + 1}
-            onChange={(event) => handlePageInput(event)}
-          />
-
-          <PrimaryButton disabled={page >= maxPage} onClick={increasePage}>
-            Página siguiente
-          </PrimaryButton>
-        </div>
+              <PrimaryButton>
+                Página siguiente
+              </PrimaryButton>
+            </div>
+          </section>
+        )}
 
         <Footer />
       </main>
