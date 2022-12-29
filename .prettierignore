@@ -6,3 +6,4 @@
 **/public
 *.config
 *.config.js
+**/generated

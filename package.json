@@ -9,20 +9,31 @@
     "format": "prettier --check .",
     "format-write": "prettier --write .",
     "lint": "next lint",
-    "lint-fix": "next lint --fix ."
+    "lint-fix": "next lint --fix .",
+    "graphql:codegen": "DOTENV_CONFIG_PATH=./.env.local graphql-codegen --config codegen.yml -r dotenv/config"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.3",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.4",
+    "graphql": "^16.6.0",
+    "lodash": "^4.17.21",
     "next": "13.0.4",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@graphql-codegen/add": "^3.2.3",
+    "@graphql-codegen/cli": "^2.16.2",
+    "@graphql-codegen/introspection": "^2.2.3",
+    "@graphql-codegen/typescript": "^2.8.6",
+    "@graphql-codegen/typescript-operations": "^2.5.11",
+    "@graphql-codegen/typescript-react-apollo": "^3.3.7",
     "@types/node": "18.11.17",
     "@types/react": "18.0.26",
     "@typescript-eslint/typescript-estree": "^5.47.0",
     "autoprefixer": "^10.4.13",
+    "dotenv": "^16.0.3",
     "eslint-config-prettier": "^8.5.0",
     "postcss": "^8.4.19",
     "prettier": "^2.7.1",

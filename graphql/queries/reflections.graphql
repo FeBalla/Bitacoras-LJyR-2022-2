@@ -1,0 +1,10 @@
+query Reflections {
+  reflections {
+    id
+    body
+    author {
+      name
+      imgUrl
+    }
+  }
+}

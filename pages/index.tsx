@@ -1,51 +1,30 @@
 import Head from "next/head"
-import { useState, useEffect } from "react"
 import Footer from "../components/Footer"
 import GameCard from "../components/GameCard"
 import NavBar from "../components/NavBar"
-import PrimaryButton from "../components/PrimaryButton"
-import gamesData from "../data/gamesData.json"
+import { useGamesQuery } from "../graphql/generated"
+import LoadingSpinner from "../components/LoadingSpinner"
+import usePage from "../hooks/usePage"
+import PageNavigator from "../components/PageNavigator"
+import { useRouter } from "next/router"
 
 export default function Home() {
-  const [page, setPage] = useState<number>(0)
-  const [startGame, setStartGame] = useState<number>(0)
-  const [endGame, setEndGame] = useState<number>(6)
-  const maxPage: number = Math.floor(gamesData?.length / 6)
+  const router = useRouter()
+  const [currentPage, gamesPerPage, currentGamesToSkip] = usePage(router)
+  const { data, loading, error } = useGamesQuery({
+    variables: { first: gamesPerPage, skip: currentGamesToSkip },
+  })
 
-  useEffect(() => {
-    const newStartGame: number = Math.min(6 * page, gamesData?.length - 1)
-    const newEndGame: number = Math.min(newStartGame + 6, gamesData?.length - 1)
-    setStartGame(newStartGame)
-    setEndGame(newEndGame)
-  }, [page])
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    })
+  if (loading) {
+    return (
+      <div className="grid h-screen place-items-center">
+        <LoadingSpinner />
+      </div>
+    )
   }
 
-  const decreasePage = () => {
-    if (page > 0) {
-      setPage(page - 1)
-      scrollToTop()
-    }
-  }
-
-  const increasePage = () => {
-    if (page < maxPage) {
-      setPage(page + 1)
-      scrollToTop()
-    }
-  }
-
-  const handlePageInput = (event) => {
-    const { value } = event.target
-    if (value > 0 && value <= maxPage) {
-      setPage(value - 1)
-      scrollToTop()
-    }
+  if (error) {
+    return <h2>Algo salió mal</h2>
   }
 
   return (
@@ -63,48 +42,23 @@ export default function Home() {
           <h1 className="text-2xl lg:text-3xl font-semibold text-gray-900">
             Bitácoras - Liderazgo, Juegos y Recreación
           </h1>
-          <h3 className="italic">
-            (Página {page + 1} de {maxPage + 1})
-          </h3>
+
+          <h4 className="italic">Página {currentPage}</h4>
         </div>
 
-        <div className="flex gap-7 md:gap-10 my-5 lg:my-8">
-          <PrimaryButton disabled={page < 1} onClick={decreasePage}>
-            Página anterior
-          </PrimaryButton>
+        {data && (
+          <section className="flex flex-col items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {data.games.map((game) => {
+                return <GameCard key={game.id} game={game} />
+              })}
+            </div>
 
-          <PrimaryButton disabled={page >= maxPage} onClick={increasePage}>
-            Página siguiente
-          </PrimaryButton>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {gamesData.slice(startGame, endGame).map((game) => {
-            return <GameCard key={game.id} data={game} />
-          })}
-        </div>
-
-        <div className="flex gap-7 md:gap-10 my-5 lg:my-8">
-          <PrimaryButton disabled={page < 1} onClick={decreasePage}>
-            Página anterior
-          </PrimaryButton>
-
-          <input
-            type="number"
-            className="hidden md:inline-block border outline-none px-1 text-center rounded-md w-min"
-            min="1"
-            max={maxPage}
-            value={page + 1}
-            onChange={(event) => handlePageInput(event)}
-          />
-
-          <PrimaryButton disabled={page >= maxPage} onClick={increasePage}>
-            Página siguiente
-          </PrimaryButton>
-        </div>
-
-        <Footer />
+            <PageNavigator pageInfo={data.gamesConnection.pageInfo} router={router} />
+          </section>
+        )}
       </main>
+      <Footer />
     </>
   )
 }
