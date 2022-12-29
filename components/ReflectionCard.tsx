@@ -22,7 +22,7 @@ const ReflectionCard = ({ reflection }: ReflectionCardProps) => {
         />
       </div>
 
-      <h2 className="text-center font-semibold text-xl">{author.name}</h2>
+      <h2 className="text-center font-semibold text-lg md:text-xl">{author.name}</h2>
       <p className="text-sm md:text-base">{body}</p>
     </div>
   )
