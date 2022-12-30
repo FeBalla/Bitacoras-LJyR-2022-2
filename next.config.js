@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["bitacoras-ljyr.s3.amazonaws.com"],
+    domains: [process.env.IMAGES_DOMAIN],
   },
 }
 
