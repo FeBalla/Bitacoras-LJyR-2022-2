@@ -1,11 +1,11 @@
 import Head from "next/head"
 import Footer from "../components/Footer"
-import GameCard from "../components/GameCard"
+import GameCard from "../components/games/GameCard"
+import PageNavigator from "../components/games/PageNavigator"
 import NavBar from "../components/NavBar"
 import { useGamesQuery } from "../graphql/generated"
 import LoadingSpinner from "../components/atoms/LoadingSpinner"
 import usePage from "../hooks/usePage"
-import PageNavigator from "../components/PageNavigator"
 import { useRouter } from "next/router"
 
 export default function Home() {

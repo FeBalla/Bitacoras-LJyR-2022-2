@@ -1,6 +1,6 @@
-import { type ReflectionsQuery } from "../graphql/generated"
-import DoubleQuotesIcon from "./atoms/DoubleQuotesIcon"
-import ImageWithFallback from "./atoms/ImageWithFallback"
+import { type ReflectionsQuery } from "../../graphql/generated"
+import DoubleQuotesIcon from "../atoms/DoubleQuotesIcon"
+import ImageWithFallback from "../atoms/ImageWithFallback"
 
 type ReflectionCardProps = {
   reflection: ReflectionsQuery["reflections"][number]
