@@ -9,10 +9,7 @@ const NavBar = () => {
       md:px-16 md:py-5 bg-gray-50"
     >
       <nav className="flex gap-5">
-        <Link
-          href="/"
-          className={router.pathname === "/" ? "font-semibold" : ""}
-        >
+        <Link href="/" className={router.pathname === "/" ? "font-semibold" : ""}>
           Bitácoras
         </Link>
 
