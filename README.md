@@ -6,9 +6,9 @@ _This is a page to show a description of the more than 130 games played in the s
 
 ## Uso de HyGraph CMS / _Use of HyGraph CMS_
 
-Para almacenar y exponer los datos se está ocupando una API GraphQL generada con [HyGraph](https://app.hygraph.com) CMS. Basta con crear un proyecto con un esquema similar y adaptar las _queries_ para personalizar el funcionamiento de la aplicación. Con este servicio se puede actualizar la información sin necesidad de implementar un backend más complejo.
+Para almacenar y exponer los datos se está ocupando una API GraphQL generada con [HyGraph](https://app.hygraph.com) CMS. Basta con crear un proyecto con un esquema similar y adaptar las _queries_ para personalizar el funcionamiento de la aplicación. Con este servicio se puede actualizar la información sin necesidad de implementar un backend más complejo (aunque puedes hacerlo si quieres).
 
-_A GraphQL API generated with [HyGraph](https://app.hygraph.com) CMS is being used to store and display the data. It is enough to create a project with a similar schema and adapt the queries to customize the operation of the application. With this service you can update the information without implementing a more complex backend._
+_A GraphQL API generated with [HyGraph](https://app.hygraph.com) CMS is being used to store and display the data. It is enough to create a project with a similar schema and adapt the queries to customize the operation of the application. With this service you can update the information without implementing a more complex backend (although you can do it if you want)._
 
 ## Run it locally
 
