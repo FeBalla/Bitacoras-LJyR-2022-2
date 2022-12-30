@@ -1,11 +1,11 @@
 import Head from "next/head"
+import { useRouter } from "next/router"
+import LoadingSpinner from "../components/atoms/LoadingSpinner"
 import GameCard from "../components/games/GameCard"
 import PageNavigator from "../components/games/PageNavigator"
-import { useGamesQuery } from "../graphql/generated"
-import LoadingSpinner from "../components/atoms/LoadingSpinner"
-import usePage from "../hooks/usePage"
-import { useRouter } from "next/router"
 import Layout from "../components/layout/Layout"
+import { useGamesQuery } from "../graphql/generated"
+import usePage from "../hooks/usePage"
 
 export default function Home() {
   const router = useRouter()

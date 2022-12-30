@@ -1,6 +1,6 @@
 import { AppProps } from "next/app"
-import "../styles/globals.css"
 import GraphQLClientProvider from "../lib/client"
+import "../styles/globals.css"
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

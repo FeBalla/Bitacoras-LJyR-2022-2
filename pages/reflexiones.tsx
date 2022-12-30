@@ -1,8 +1,8 @@
 import Head from "next/head"
-import { useReflectionsQuery } from "../graphql/generated"
 import LoadingSpinner from "../components/atoms/LoadingSpinner"
-import ReflectionCard from "../components/reflections/ReflectionCard"
 import Layout from "../components/layout/Layout"
+import ReflectionCard from "../components/reflections/ReflectionCard"
+import { useReflectionsQuery } from "../graphql/generated"
 
 const Home = () => {
   const { data, loading, error } = useReflectionsQuery()

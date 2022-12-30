@@ -1,7 +1,7 @@
-import PrimaryButton from "../atoms/PrimaryButton"
+import { NextRouter } from "next/router"
 import { type PageInfo } from "../../graphql/generated"
 import usePage from "../../hooks/usePage"
-import { NextRouter } from "next/router"
+import PrimaryButton from "../atoms/PrimaryButton"
 
 type PageNavigatorProps = {
   pageInfo: PageInfo
