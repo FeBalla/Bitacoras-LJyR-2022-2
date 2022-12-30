@@ -1,12 +1,11 @@
 import Head from "next/head"
-import Footer from "../components/Footer"
-import GameCard from "../components/GameCard"
-import NavBar from "../components/NavBar"
+import GameCard from "../components/games/GameCard"
+import PageNavigator from "../components/games/PageNavigator"
 import { useGamesQuery } from "../graphql/generated"
-import LoadingSpinner from "../components/LoadingSpinner"
+import LoadingSpinner from "../components/atoms/LoadingSpinner"
 import usePage from "../hooks/usePage"
-import PageNavigator from "../components/PageNavigator"
 import { useRouter } from "next/router"
+import Layout from "../components/layout/Layout"
 
 export default function Home() {
   const router = useRouter()
@@ -35,30 +34,29 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <NavBar />
+      <Layout>
+        <div className="flex flex-col justify-center items-center p-4 lg:px-20 sm:p-5">
+          <div className="flex flex-col text-center my-5 gap-2">
+            <h1 className="text-2xl lg:text-3xl font-semibold text-gray-900">
+              Bitácoras - Liderazgo, Juegos y Recreación
+            </h1>
 
-      <main className="flex flex-col justify-center items-center p-4 lg:px-20 sm:p-5">
-        <div className="flex flex-col text-center my-5 gap-2">
-          <h1 className="text-2xl lg:text-3xl font-semibold text-gray-900">
-            Bitácoras - Liderazgo, Juegos y Recreación
-          </h1>
+            <h4 className="italic">Página {currentPage}</h4>
+          </div>
 
-          <h4 className="italic">Página {currentPage}</h4>
+          {data && (
+            <section className="flex flex-col items-center">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {data.games.map((game) => {
+                  return <GameCard key={game.id} game={game} />
+                })}
+              </div>
+
+              <PageNavigator pageInfo={data.gamesConnection.pageInfo} router={router} />
+            </section>
+          )}
         </div>
-
-        {data && (
-          <section className="flex flex-col items-center">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {data.games.map((game) => {
-                return <GameCard key={game.id} game={game} />
-              })}
-            </div>
-
-            <PageNavigator pageInfo={data.gamesConnection.pageInfo} router={router} />
-          </section>
-        )}
-      </main>
-      <Footer />
+      </Layout>
     </>
   )
 }
