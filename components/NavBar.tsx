@@ -6,7 +6,7 @@ const NavBar = () => {
   return (
     <header
       className="flex w-full sticky top-0 z-50 justify-center md:justify-end shadow-md px-5 py-3 
-      md:px-16 md:py-5 bg-white"
+      md:px-16 md:py-5 bg-gray-50"
     >
       <nav className="flex gap-5">
         <Link
@@ -20,7 +20,7 @@ const NavBar = () => {
           href="/reflexiones"
           className={router.pathname === "/reflexiones" ? "font-semibold" : ""}
         >
-          Reflexión
+          Reflexiones
         </Link>
       </nav>
     </header>
