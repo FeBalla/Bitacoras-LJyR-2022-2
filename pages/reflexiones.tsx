@@ -2,7 +2,7 @@ import Head from "next/head"
 import Footer from "../components/Footer"
 import NavBar from "../components/NavBar"
 import { useReflectionsQuery } from "../graphql/generated"
-import LoadingSpinner from "../components/LoadingSpinner"
+import LoadingSpinner from "../components/atoms/LoadingSpinner"
 import ReflectionCard from "../components/ReflectionCard"
 
 const Home = () => {
