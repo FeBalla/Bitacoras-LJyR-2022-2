@@ -1,12 +1,9 @@
 import CurrentPageButton from "./atoms/CurrentPageButton"
 import LinkWrapper from "../Links/LinkWrapper"
 import PageButton from "./atoms/PageButton"
-import { useEffect, type FC, useState } from "react"
+import { type FC } from "react"
 import { usePagination } from "../../../hooks/usePagination"
-import { GamesQuery, type GameConnection } from "../../../graphql/generated"
-
-// How many buttons in the pagination will be displayed.
-const _MAX_PAGE_BUTTONS_DISPLAYED = 5
+import { GamesQuery } from "../../../graphql/generated"
 
 type PaginationProps = {
   pathname: string
@@ -14,35 +11,10 @@ type PaginationProps = {
 }
 
 const Pagination: FC<PaginationProps> = ({ pathname, pageMetaData }) => {
-  const [pagesToShow, setPagesToShow] = useState<number[]>([])
   const pagination = usePagination(pageMetaData)
-  const totalPages = Math.ceil(pagination.totalItems / pagination.itemsPerPage)
-
-  const getPagesToShow = (): number[] => {
-    const lastButtonPage = Math.min(
-      totalPages,
-      Math.max(_MAX_PAGE_BUTTONS_DISPLAYED, pagination.currentPage + 2)
-    )
-
-    let page = Math.max(1, lastButtonPage - (_MAX_PAGE_BUTTONS_DISPLAYED - 1))
-    const pagesToShow = []
-
-    while (page <= lastButtonPage) {
-      pagesToShow.push(page)
-      page += 1
-    }
-
-    return pagesToShow
-  }
-
-  useEffect(() => {
-    const newPagesToShow = getPagesToShow()
-    setPagesToShow(newPagesToShow)
-  }, [pageMetaData])
-
-
+  
   // If there's less than one page, the pagination is an empty component.
-  if (totalPages <= 1) {
+  if (pagination.totalPages <= 1) {
     return <></>
   }
 
@@ -104,7 +76,7 @@ const Pagination: FC<PaginationProps> = ({ pathname, pageMetaData }) => {
               <span className="sr-only">Previous</span>
             </LinkWrapper>
 
-            {pagesToShow.map((page) => {
+            {pagination.pagesToShow.map((page) => {
               if (page === pagination.currentPage) {
                 return <CurrentPageButton key={page} pageNumber={page} />
               }

@@ -55,7 +55,7 @@ export default function Home() {
                 })}
               </div>
 
-              <PageNavigator pageInfo={data.gamesConnection.pageInfo} router={router} />
+              {/* <PageNavigator pageInfo={data.gamesConnection.pageInfo} router={router} /> */}
               <Pagination pageMetaData={data.gamesConnection} pathname="/" />
             </section>
           )}
