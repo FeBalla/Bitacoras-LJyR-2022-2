@@ -1,7 +1,7 @@
 import { GamesQuery } from "~/graphql/generated"
 import { PageState } from "~/types"
 import { getPaginationConfig } from "~/utils/pagination"
-import LinkWrapper from "../Links/LinkWrapper"
+import LinkWrapper from "~/components/UIBlocks/LinkWrapper"
 import CurrentPageButton from "./atoms/CurrentPageButton"
 import PageButton from "./atoms/PageButton"
 

@@ -1,5 +1,5 @@
 import { type GamesQuery } from "~/graphql/generated"
-import ImageWithFallback from "../atoms/ImageWithFallback"
+import ImageWithFallback from "~/components/UIBlocks/ImageWithFallback"
 
 type GameCardProps = {
   game: GamesQuery["games"][number]

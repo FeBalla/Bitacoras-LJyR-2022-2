@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { useRouter } from "next/router"
 
-const NavBar = () => {
+const HEader = () => {
   const router = useRouter()
   return (
     <header
@@ -24,4 +24,4 @@ const NavBar = () => {
   )
 }
 
-export default NavBar
+export default HEader

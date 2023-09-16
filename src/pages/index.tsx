@@ -1,9 +1,9 @@
 import Head from "next/head"
 import { useRouter } from "next/router"
-import LoadingSpinner from "~/components/atoms/LoadingSpinner"
-import Pagination from "~/components/atoms/Pagination"
-import GameCard from "~/components/games/GameCard"
-import Layout from "~/components/layout/Layout"
+import LoadingSpinner from "~/components/UIBlocks/LoadingSpinner"
+import Pagination from "~/components/UIBlocks/Pagination"
+import GameCard from "~/components/GameCard"
+import Layout from "~/components/UIBlocks/Layout"
 import { useGamesQuery } from "~/graphql/generated"
 import usePage from "~/hooks/usePage"
 

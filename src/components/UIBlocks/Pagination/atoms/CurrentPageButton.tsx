@@ -1,5 +1,5 @@
 import type { FC } from "react"
-import LinkWrapper from "../../Links/LinkWrapper"
+import LinkWrapper from "~/components/UIBlocks/LinkWrapper"
 
 type CurrentPageButtonProps = {
   pageNumber: number

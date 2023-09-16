@@ -1,5 +1,5 @@
-import Footer from "./Footer"
-import NavBar from "./NavBar"
+import Footer from "./atoms/Footer"
+import Header from "./atoms/Header"
 
 type LayoutProps = {
   children: JSX.Element
@@ -8,7 +8,7 @@ type LayoutProps = {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="flex flex-col h-screen justify-between">
-      <NavBar />
+      <Header />
       <main className="mb-auto">{children}</main>
       <Footer />
     </div>
