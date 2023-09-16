@@ -25,43 +25,19 @@ const Pagination: FC<PaginationProps> = ({ pathname, currentPage, pageMetaData }
 
   return (
     <div
-      className="flex w-full items-center justify-between border-t border-gray-200 
+      className="flex justify-center w-full items-center border-t border-gray-200 
       px-4 py-3 sm:px-6"
     >
-      <div className="flex flex-1 justify-between sm:hidden">
-        <LinkWrapper
-          className="relative inline-flex items-center rounded-md border border-gray-300
-          bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50
-          disabled:bg-gray-100 disabled:opacity-70"
-          href={pathname}
-          isDisabled={pagination.isPreviousDisabled}
-          query={{ page: pagination.currentPage - 1 }}
-        >
-          Previous
-        </LinkWrapper>
-
-        <LinkWrapper
-          className="relative ml-3 inline-flex items-center rounded-md border border-gray-300
-          bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50
-          disabled:bg-gray-100 disabled:opacity-70"
-          href={pathname}
-          isDisabled={pagination.isNextDisabled}
-          query={{ page: pagination.currentPage + 1 }}
-        >
-          Next
-        </LinkWrapper>
-      </div>
-
-      <div className="hidden gap-5 sm:flex sm:flex-1 sm:items-center sm:justify-between">
+      <div className="hidden flex-col gap-5 sm:flex sm:items-center sm:justify-between">
         <div>
           <p className="text-sm text-gray-700">
-            Showing
+            Mostrando
             <span className="font-medium">{` ${pagination.itemFrom} `}</span>
-            to
+            -
             <span className="font-medium">{` ${pagination.itemTo} `}</span>
-            of
+            de
             <span className="font-medium">{` ${pagination.totalItems} `}</span>
-            results
+            juegos
           </p>
         </div>
 
@@ -78,7 +54,7 @@ const Pagination: FC<PaginationProps> = ({ pathname, currentPage, pageMetaData }
               isDisabled={pagination.isPreviousDisabled}
               query={{ page: pagination.currentPage - 1 }}
             >
-              <span className="sr-only">Previous</span>
+              <span className="sr-only">Anterior</span>
             </LinkWrapper>
 
             {pagination.pagesToShow.map((page) => {
@@ -96,10 +72,34 @@ const Pagination: FC<PaginationProps> = ({ pathname, currentPage, pageMetaData }
               isDisabled={pagination.isNextDisabled}
               query={{ page: pagination.currentPage + 1 }}
             >
-              <span className="sr-only">Next</span>
+              <span className="sr-only">Siguiente</span>
             </LinkWrapper>
           </nav>
         </div>
+      </div>
+
+      <div className="flex justify-between sm:hidden">
+        <LinkWrapper
+          className="relative inline-flex items-center rounded-md border border-gray-300
+          bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50
+          disabled:bg-gray-100 disabled:opacity-70"
+          href={pathname}
+          isDisabled={pagination.isPreviousDisabled}
+          query={{ page: pagination.currentPage - 1 }}
+        >
+          Anterior
+        </LinkWrapper>
+
+        <LinkWrapper
+          className="relative ml-3 inline-flex items-center rounded-md border border-gray-300
+          bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50
+          disabled:bg-gray-100 disabled:opacity-70"
+          href={pathname}
+          isDisabled={pagination.isNextDisabled}
+          query={{ page: pagination.currentPage + 1 }}
+        >
+          Siguiente
+        </LinkWrapper>
       </div>
     </div>
   )
