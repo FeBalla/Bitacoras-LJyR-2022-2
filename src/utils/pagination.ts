@@ -2,16 +2,16 @@ import { GamesQuery } from "../graphql/generated"
 
 type GameConnection = GamesQuery["gamesConnection"]
 
-// How many buttons in the pagination will be displayed.
-const _MAX_PAGE_BUTTONS_DISPLAYED = 5
 
-const getPagesToShow = (currentPage: number, totalPages: number): number[] => {
+const _getPagesToShow = (currentPage: number, totalPages: number): number[] => {
+  // How many buttons in the pagination will be displayed.
+  const MAX_PAGE_BUTTONS_DISPLAYED = 8
   const lastButtonPage = Math.min(
     totalPages,
-    Math.max(_MAX_PAGE_BUTTONS_DISPLAYED, currentPage + 2)
+    Math.max(MAX_PAGE_BUTTONS_DISPLAYED, currentPage + 2)
   )
 
-  let page = Math.max(1, lastButtonPage - (_MAX_PAGE_BUTTONS_DISPLAYED - 1))
+  let page = Math.max(1, lastButtonPage - (MAX_PAGE_BUTTONS_DISPLAYED - 1))
   const pagesToShow = []
 
   while (page <= lastButtonPage) {
@@ -33,14 +33,14 @@ type UsePaginationState = {
   totalPages: number
 }
 
-const usePagination = (
+const getPaginationConfig = (
   currentPage: any,
   pageMetaData: GameConnection,
 ): UsePaginationState => {
   const gamesPerPage = currentPage.itemsPerPage || 6
   const totalItems = pageMetaData.aggregate.count
   const totalPages = Math.ceil(totalItems / gamesPerPage)
-  const pagesToShow = getPagesToShow(currentPage.page, totalPages)
+  const pagesToShow = _getPagesToShow(currentPage.page, totalPages)
 
   return {
     itemFrom: currentPage.itemsToSkip,
@@ -55,4 +55,4 @@ const usePagination = (
   }
 }
 
-export { usePagination }
+export { getPaginationConfig }

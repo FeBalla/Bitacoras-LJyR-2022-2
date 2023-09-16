@@ -1,6 +1,6 @@
 import { type FC } from "react"
 import { GamesQuery } from "../../../graphql/generated"
-import { usePagination } from "../../../hooks/usePagination"
+import { getPaginationConfig } from "../../../utils/pagination"
 import LinkWrapper from "../Links/LinkWrapper"
 import CurrentPageButton from "./atoms/CurrentPageButton"
 import PageButton from "./atoms/PageButton"
@@ -16,10 +16,10 @@ type PaginationProps = {
 }
 
 const Pagination: FC<PaginationProps> = ({ pathname, currentPage, pageMetaData }) => {
-  const pagination = usePagination(currentPage, pageMetaData)
+  const paginationConfig = getPaginationConfig(currentPage, pageMetaData)
 
   // If there's less than one page, the pagination is an empty component.
-  if (pagination.totalPages <= 1) {
+  if (paginationConfig.totalPages <= 1) {
     return <></>
   }
 
@@ -32,11 +32,10 @@ const Pagination: FC<PaginationProps> = ({ pathname, currentPage, pageMetaData }
         <div>
           <p className="text-sm text-gray-700">
             Mostrando
-            <span className="font-medium">{` ${pagination.itemFrom} `}</span>
-            -
-            <span className="font-medium">{` ${pagination.itemTo} `}</span>
+            <span className="font-medium">{` ${paginationConfig.itemFrom} `}</span>-
+            <span className="font-medium">{` ${paginationConfig.itemTo} `}</span>
             de
-            <span className="font-medium">{` ${pagination.totalItems} `}</span>
+            <span className="font-medium">{` ${paginationConfig.totalItems} `}</span>
             juegos
           </p>
         </div>
@@ -51,14 +50,14 @@ const Pagination: FC<PaginationProps> = ({ pathname, currentPage, pageMetaData }
               bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20
               disabled:bg-gray-100 disabled:opacity-70"
               href={pathname}
-              isDisabled={pagination.isPreviousDisabled}
-              query={{ page: pagination.currentPage - 1 }}
+              isDisabled={paginationConfig.isPreviousDisabled}
+              query={{ page: paginationConfig.currentPage - 1 }}
             >
               <span className="sr-only">Anterior</span>
             </LinkWrapper>
 
-            {pagination.pagesToShow.map((page) => {
-              if (page === pagination.currentPage) {
+            {paginationConfig.pagesToShow.map((page) => {
+              if (page === paginationConfig.currentPage) {
                 return <CurrentPageButton key={page} pageNumber={page} />
               }
               return <PageButton href={pathname} key={page} pageNumber={page} />
@@ -69,8 +68,8 @@ const Pagination: FC<PaginationProps> = ({ pathname, currentPage, pageMetaData }
               bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20
               disabled:bg-gray-100 disabled:opacity-70"
               href={pathname}
-              isDisabled={pagination.isNextDisabled}
-              query={{ page: pagination.currentPage + 1 }}
+              isDisabled={paginationConfig.isNextDisabled}
+              query={{ page: paginationConfig.currentPage + 1 }}
             >
               <span className="sr-only">Siguiente</span>
             </LinkWrapper>
@@ -84,8 +83,8 @@ const Pagination: FC<PaginationProps> = ({ pathname, currentPage, pageMetaData }
           bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50
           disabled:bg-gray-100 disabled:opacity-70"
           href={pathname}
-          isDisabled={pagination.isPreviousDisabled}
-          query={{ page: pagination.currentPage - 1 }}
+          isDisabled={paginationConfig.isPreviousDisabled}
+          query={{ page: paginationConfig.currentPage - 1 }}
         >
           Anterior
         </LinkWrapper>
@@ -95,8 +94,8 @@ const Pagination: FC<PaginationProps> = ({ pathname, currentPage, pageMetaData }
           bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50
           disabled:bg-gray-100 disabled:opacity-70"
           href={pathname}
-          isDisabled={pagination.isNextDisabled}
-          query={{ page: pagination.currentPage + 1 }}
+          isDisabled={paginationConfig.isNextDisabled}
+          query={{ page: paginationConfig.currentPage + 1 }}
         >
           Siguiente
         </LinkWrapper>
