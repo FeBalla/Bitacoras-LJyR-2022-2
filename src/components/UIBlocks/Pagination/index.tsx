@@ -1,3 +1,4 @@
+import { ChevronLeftIcon, ChevronRightIcon } from "~/components/icons"
 import LinkWrapper from "~/components/UIBlocks/LinkWrapper"
 import { GamesQuery } from "~/graphql/generated"
 import { PageState } from "~/types"
@@ -50,6 +51,7 @@ const Pagination = ({ pathname, page, pageMetaData }: PaginationProps) => {
               query={{ page: paginationConfig.currentPage - 1 }}
             >
               <span className="sr-only">Anterior</span>
+              <ChevronLeftIcon />
             </LinkWrapper>
 
             {paginationConfig.pagesToShow.map((page) => {
@@ -68,6 +70,7 @@ const Pagination = ({ pathname, page, pageMetaData }: PaginationProps) => {
               query={{ page: paginationConfig.currentPage + 1 }}
             >
               <span className="sr-only">Siguiente</span>
+              <ChevronRightIcon />
             </LinkWrapper>
           </nav>
         </div>

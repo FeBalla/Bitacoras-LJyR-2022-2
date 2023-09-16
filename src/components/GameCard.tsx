@@ -8,7 +8,6 @@ type GameCardProps = {
 const GameCard = ({ game }: GameCardProps) => {
   return (
     <div className="flex flex-col rounded-md gap-2 border p-3">
-
       <div className="text-left">
         <h2 className="font-semibold text-2xl text-gray-800">{game.name}</h2>
       </div>

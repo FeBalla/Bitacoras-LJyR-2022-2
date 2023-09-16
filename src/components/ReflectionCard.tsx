@@ -1,4 +1,4 @@
-import DoubleQuotesIcon from "~/components/UIBlocks/DoubleQuotesIcon"
+import DoubleQuotesIcon from "~/components/icons/DoubleQuotesIcon"
 import ImageWithFallback from "~/components/UIBlocks/ImageWithFallback"
 import { type ReflectionsQuery } from "~/graphql/generated"
 
