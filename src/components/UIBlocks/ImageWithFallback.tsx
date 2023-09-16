@@ -2,7 +2,7 @@ import Image from "next/image"
 import { useEffect, useState } from "react"
 
 type ImageWithFallbackProps = {
-  src: string
+  src?: string
   style?: string
   alt?: string
 }
@@ -12,14 +12,14 @@ const ImageWithFallback = ({ src, alt, style }: ImageWithFallbackProps) => {
   const [imgSrc, setImgSrc] = useState(fallbackSrc)
 
   useEffect(() => {
-    setImgSrc(src)
+    setImgSrc(src || fallbackSrc)
   }, [src])
 
   return (
     <Image
       src={imgSrc}
       fill
-      alt={alt}
+      alt={alt || "imagen"}
       className={`bg-gray-100 object-cover ${style || ""}`}
       onError={() => {
         setImgSrc(fallbackSrc)

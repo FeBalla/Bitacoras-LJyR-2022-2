@@ -4,6 +4,10 @@ const nextConfig = {
   images: {
     domains: [process.env.IMAGES_DOMAIN || ""],
   },
+  webpack(config) {
+    config.resolve.extensions = [".mjs", ".js", ".jsx", ".ts", ".tsx", ".json"]
+    return config
+  },
 }
 
 module.exports = nextConfig
