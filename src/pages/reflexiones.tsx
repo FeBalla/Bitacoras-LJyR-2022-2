@@ -1,7 +1,7 @@
 import Head from "next/head"
-import LoadingSpinner from "../components/atoms/LoadingSpinner"
-import Layout from "../components/layout/Layout"
-import ReflectionCard from "../components/reflections/ReflectionCard"
+import LoadingSpinner from "~/components/atoms/LoadingSpinner"
+import Layout from "~/components/layout/Layout"
+import ReflectionCard from "~/components/reflections/ReflectionCard"
 import { useReflectionsQuery } from "../graphql/generated"
 
 const Home = () => {
