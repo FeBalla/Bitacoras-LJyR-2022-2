@@ -1,5 +1,4 @@
-import { PageInfo } from "../graphql/generated"
-import type { ItemConnection, PageState } from "../types"
+import type { ItemConnection, PageState } from "~/types"
 
 type PaginationConfig = {
   currentPage: number

@@ -8,7 +8,7 @@ export type PageState = {
 }
 
 // Generic type for connection with a HyGraph item
-type ItemConnection = {
+export type ItemConnection = {
     pageInfo: PageInfo
     aggregate: Aggregate
 }
