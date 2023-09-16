@@ -1,6 +1,6 @@
 import { NextRouter } from "next/router"
 import { useEffect, useState } from "react"
-import { PageState } from "../types"
+import { PageState } from "~/types"
 
 const usePage = (router: NextRouter): PageState => {
   const itemsPerPage = Number(process.env.NEXT_PUBLIC_GAMES_PER_PAGE) || 6
