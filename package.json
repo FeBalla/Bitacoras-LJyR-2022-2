@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "format": "prettier --check .",
-    "format-fix": "prettier --write .",
+    "format": "prettier --check ./src",
+    "format-fix": "prettier --write ./src",
     "lint": "next lint",
     "lint-fix": "next lint --fix .",
     "graphql:codegen": "DOTENV_CONFIG_PATH=./.env.local graphql-codegen --config codegen.yml -r dotenv/config"
