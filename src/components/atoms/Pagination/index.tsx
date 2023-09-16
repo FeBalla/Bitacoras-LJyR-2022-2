@@ -7,11 +7,16 @@ import PageButton from "./atoms/PageButton"
 
 type PaginationProps = {
   pathname: string
+  currentPage: {
+    page: number
+    itemsPerPage: number
+    itemsToSkip: number
+  }
   pageMetaData: GamesQuery["gamesConnection"]
 }
 
-const Pagination: FC<PaginationProps> = ({ pathname, pageMetaData }) => {
-  const pagination = usePagination(pageMetaData)
+const Pagination: FC<PaginationProps> = ({ pathname, currentPage, pageMetaData }) => {
+  const pagination = usePagination(currentPage, pageMetaData)
 
   // If there's less than one page, the pagination is an empty component.
   if (pagination.totalPages <= 1) {

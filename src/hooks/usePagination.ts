@@ -1,6 +1,6 @@
-import router from "next/router"
 import { useEffect, useState } from "react"
 import { GamesQuery } from "../graphql/generated"
+import router from "next/router"
 
 type GameConnection = GamesQuery["gamesConnection"]
 
@@ -20,7 +20,6 @@ const getPagesToShow = (currentPage: number, totalPages: number): number[] => {
     pagesToShow.push(page)
     page += 1
   }
-  console.log(">>> ", pagesToShow)
   return pagesToShow
 }
 
@@ -32,44 +31,33 @@ type UsePaginationState = {
   isNextDisabled: boolean
   currentPage: number
   itemsPerPage: number
-  gamesToSkip: number
   pagesToShow: number[]
   totalPages: number
 }
 
-const usePagination = (pageMetaData: GameConnection): UsePaginationState => {
-  const gamesPerPage = Number(process.env.NEXT_PUBLIC_GAMES_PER_PAGE) || 6
-  const [currentPage, setCurrentPage] = useState(1)
-  const [currentGamesToSkip, setCurrentGamesToSkip] = useState(0)
+const usePagination = (
+  currentPage: any,
+  pageMetaData: GameConnection,
+): UsePaginationState => {
   const [pagesToShow, setPagesToShow] = useState<number[]>([])
-
+  const gamesPerPage = currentPage.itemsPerPage || 6
   const totalItems = pageMetaData.aggregate.count
   const totalPages = Math.ceil(totalItems / gamesPerPage)
 
   useEffect(() => {
-    const { page: queryPage } = router.query
-    const page = Number(queryPage)
-
-    if (isNaN(page)) {
-      setCurrentPage(1)
-    } else {
-      setCurrentPage(page)
-    }
-    const gamesToSkip = gamesPerPage * (currentPage - 1)
-    const pagesToShow = getPagesToShow(currentPage, totalPages)
-    setCurrentGamesToSkip(gamesToSkip)
+    const pagesToShow = getPagesToShow(currentPage.page, totalPages)
     setPagesToShow(pagesToShow)
-  }, [router, currentPage, gamesPerPage, pageMetaData])
-
+  
+  }, [currentPage, pageMetaData])
+  
   return {
-    itemFrom: (currentPage - 1) * gamesPerPage + 1,
-    itemTo: Math.min(currentPage * gamesPerPage, totalItems),
-    totalItems: totalItems,
-    isPreviousDisabled: currentPage === 1,
-    isNextDisabled: false, //currentPage === pageMetaData.totalPages,
-    currentPage: currentPage,
-    gamesToSkip: currentGamesToSkip,
+    itemFrom: currentPage.itemsToSkip,
+    itemTo: Math.min(currentPage.itemsToSkip + gamesPerPage, totalItems),
     itemsPerPage: gamesPerPage,
+    totalItems: totalItems,
+    isPreviousDisabled: currentPage.page === 1,
+    isNextDisabled: currentPage.page === totalPages,
+    currentPage: currentPage.page,
     pagesToShow: pagesToShow,
     totalPages: totalPages,
   }

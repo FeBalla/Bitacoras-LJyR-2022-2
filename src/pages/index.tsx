@@ -56,7 +56,11 @@ export default function Home() {
                 })}
               </div>
 
-              <Pagination pageMetaData={data.gamesConnection} pathname="/" />
+              <Pagination
+                currentPage={currentPage}
+                pageMetaData={data.gamesConnection}
+                pathname="/"
+              />
             </section>
           )}
         </div>
