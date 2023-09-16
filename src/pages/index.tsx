@@ -5,7 +5,7 @@ import Pagination from "~/components/atoms/Pagination"
 import GameCard from "~/components/games/GameCard"
 import Layout from "~/components/layout/Layout"
 import { useGamesQuery } from "~/graphql/generated"
-import usePage from "../hooks/usePage"
+import usePage from "~/hooks/usePage"
 
 export default function Home() {
   const router = useRouter()

@@ -17,6 +17,7 @@
     "baseUrl": "src",
     "paths": {
       "~/graphql/*": ["graphql/*"],
+      "~/hooks/*": ["hooks/*"],
       "~/components/*": ["components/*"],
       "~/public/*": ["public/*"],
       "~/styles/*": ["styles/*"],
