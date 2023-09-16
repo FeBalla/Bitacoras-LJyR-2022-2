@@ -1,4 +1,4 @@
-import { type ReflectionsQuery } from "../../graphql/generated"
+import { type ReflectionsQuery } from "~/graphql/generated"
 import DoubleQuotesIcon from "../atoms/DoubleQuotesIcon"
 import ImageWithFallback from "../atoms/ImageWithFallback"
 

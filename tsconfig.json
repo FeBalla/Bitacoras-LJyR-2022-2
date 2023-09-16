@@ -16,6 +16,7 @@
     "incremental": true,
     "baseUrl": "src",
     "paths": {
+      "~/graphql/*": ["graphql/*"],
       "~/components/*": ["components/*"],
       "~/public/*": ["public/*"],
       "~/styles/*": ["styles/*"],

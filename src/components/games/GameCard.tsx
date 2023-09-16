@@ -1,4 +1,4 @@
-import { type GamesQuery } from "../../graphql/generated"
+import { type GamesQuery } from "~/graphql/generated"
 import ImageWithFallback from "../atoms/ImageWithFallback"
 
 type GameCardProps = {
