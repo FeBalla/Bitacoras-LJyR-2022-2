@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react"
 import { GamesQuery } from "../graphql/generated"
-import router from "next/router"
 
 type GameConnection = GamesQuery["gamesConnection"]
 
@@ -39,17 +37,11 @@ const usePagination = (
   currentPage: any,
   pageMetaData: GameConnection,
 ): UsePaginationState => {
-  const [pagesToShow, setPagesToShow] = useState<number[]>([])
   const gamesPerPage = currentPage.itemsPerPage || 6
   const totalItems = pageMetaData.aggregate.count
   const totalPages = Math.ceil(totalItems / gamesPerPage)
+  const pagesToShow = getPagesToShow(currentPage.page, totalPages)
 
-  useEffect(() => {
-    const pagesToShow = getPagesToShow(currentPage.page, totalPages)
-    setPagesToShow(pagesToShow)
-  
-  }, [currentPage, pageMetaData])
-  
   return {
     itemFrom: currentPage.itemsToSkip,
     itemTo: Math.min(currentPage.itemsToSkip + gamesPerPage, totalItems),
