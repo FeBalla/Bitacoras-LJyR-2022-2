@@ -22,7 +22,7 @@ const Pagination = ({ pathname, page, pageMetaData }: PaginationProps) => {
 
   return (
     <div
-      className="flex justify-center w-full items-center border-t border-gray-200 
+      className="flex w-full items-center justify-center border-t border-gray-200 
       px-4 py-3 sm:px-6"
     >
       <div className="hidden flex-col gap-5 sm:flex sm:items-center sm:justify-between">

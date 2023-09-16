@@ -39,9 +39,9 @@ const Home = () => {
       </Head>
 
       <Layout>
-        <div className="flex flex-col justify-center items-center p-4 lg:px-20 sm:p-5">
-          <div className="flex flex-col text-center my-5 gap-2">
-            <h1 className="text-2xl lg:text-3xl font-semibold text-gray-900">
+        <div className="flex flex-col items-center justify-center p-4 sm:p-5 lg:px-20">
+          <div className="my-5 flex flex-col gap-2 text-center">
+            <h1 className="text-2xl font-semibold text-gray-900 lg:text-3xl">
               Bitácoras - Liderazgo, Juegos y Recreación
             </h1>
 
@@ -50,7 +50,7 @@ const Home = () => {
 
           {data && (
             <section className="flex flex-col items-center">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
                 {data.games.map((game) => {
                   return <GameCard key={game.id} game={game} />
                 })}

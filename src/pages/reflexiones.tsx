@@ -32,11 +32,11 @@ const Home = () => {
       </Head>
 
       <Layout>
-        <div className="flex flex-col justify-center items-center p-4 lg:px-20 sm:p-5 my-5 gap-5">
-          <h1 className="font-semibold text-2xl md:text-3xl">Reflexiones</h1>
+        <div className="my-5 flex flex-col items-center justify-center gap-5 p-4 sm:p-5 lg:px-20">
+          <h1 className="text-2xl font-semibold md:text-3xl">Reflexiones</h1>
 
           {data && (
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
               {data.reflections.map((reflection) => {
                 return <ReflectionCard key={reflection.id} reflection={reflection} />
               })}
