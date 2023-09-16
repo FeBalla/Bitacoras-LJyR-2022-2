@@ -27,6 +27,8 @@ export default function Home() {
     return <h2>Algo salió mal</h2>
   }
 
+  console.log(data)
+
   return (
     <>
       <Head>
@@ -54,7 +56,7 @@ export default function Home() {
               </div>
 
               <PageNavigator pageInfo={data.gamesConnection.pageInfo} router={router} />
-              <Pagination pageMetaData={{}} pathname="/" />
+              <Pagination pageMetaData={data.gamesConnection} pathname="/" />
             </section>
           )}
         </div>

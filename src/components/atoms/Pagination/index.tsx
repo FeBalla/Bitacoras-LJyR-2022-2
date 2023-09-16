@@ -1,27 +1,48 @@
 import CurrentPageButton from "./atoms/CurrentPageButton"
 import LinkWrapper from "../Links/LinkWrapper"
 import PageButton from "./atoms/PageButton"
-import type { FC } from "react"
+import { useEffect, type FC, useState } from "react"
 import { usePagination } from "../../../hooks/usePagination"
+import { GamesQuery, type GameConnection } from "../../../graphql/generated"
+
+// How many buttons in the pagination will be displayed.
+const _MAX_PAGE_BUTTONS_DISPLAYED = 5
 
 type PaginationProps = {
   pathname: string
-  pageMetaData?: any
+  pageMetaData: GamesQuery["gamesConnection"]
 }
 
 const Pagination: FC<PaginationProps> = ({ pathname, pageMetaData }) => {
-  pageMetaData = {
-    pageNumber: 1,
-    pageSize: 6,
-    totalPages: 20,
-    totalItems: 135,
+  const [pagesToShow, setPagesToShow] = useState<number[]>([])
+  const pagination = usePagination(pageMetaData)
+  const totalPages = Math.ceil(pagination.totalItems / pagination.itemsPerPage)
+
+  const getPagesToShow = (): number[] => {
+    const lastButtonPage = Math.min(
+      totalPages,
+      Math.max(_MAX_PAGE_BUTTONS_DISPLAYED, pagination.currentPage + 2)
+    )
+
+    let page = Math.max(1, lastButtonPage - (_MAX_PAGE_BUTTONS_DISPLAYED - 1))
+    const pagesToShow = []
+
+    while (page <= lastButtonPage) {
+      pagesToShow.push(page)
+      page += 1
+    }
+
+    return pagesToShow
   }
 
-  const pagination = usePagination(pageMetaData)
+  useEffect(() => {
+    const newPagesToShow = getPagesToShow()
+    setPagesToShow(newPagesToShow)
+  }, [pageMetaData])
 
 
   // If there's less than one page, the pagination is an empty component.
-  if (pageMetaData.totalPages <= 1) {
+  if (totalPages <= 1) {
     return <></>
   }
 
@@ -37,7 +58,7 @@ const Pagination: FC<PaginationProps> = ({ pathname, pageMetaData }) => {
           disabled:bg-gray-100 disabled:opacity-70"
           href={pathname}
           isDisabled={pagination.isPreviousDisabled}
-          query={{ page: pageMetaData.pageNumber - 1 }}
+          query={{ page: pagination.currentPage - 1 }}
         >
           Previous
         </LinkWrapper>
@@ -48,7 +69,7 @@ const Pagination: FC<PaginationProps> = ({ pathname, pageMetaData }) => {
           disabled:bg-gray-100 disabled:opacity-70"
           href={pathname}
           isDisabled={pagination.isNextDisabled}
-          query={{ page: pageMetaData.pageNumber + 1 }}
+          query={{ page: pagination.currentPage + 1 }}
         >
           Next
         </LinkWrapper>
@@ -78,13 +99,13 @@ const Pagination: FC<PaginationProps> = ({ pathname, pageMetaData }) => {
               disabled:bg-gray-100 disabled:opacity-70"
               href={pathname}
               isDisabled={pagination.isPreviousDisabled}
-              query={{ page: pageMetaData.pageNumber - 1 }}
+              query={{ page: pagination.currentPage - 1 }}
             >
               <span className="sr-only">Previous</span>
             </LinkWrapper>
 
-            {pagination.pagesToShow.map((page) => {
-              if (page === pageMetaData.pageNumber) {
+            {pagesToShow.map((page) => {
+              if (page === pagination.currentPage) {
                 return <CurrentPageButton key={page} pageNumber={page} />
               }
               return <PageButton href={pathname} key={page} pageNumber={page} />
@@ -96,7 +117,7 @@ const Pagination: FC<PaginationProps> = ({ pathname, pageMetaData }) => {
               disabled:bg-gray-100 disabled:opacity-70"
               href={pathname}
               isDisabled={pagination.isNextDisabled}
-              query={{ page: pageMetaData.pageNumber + 1 }}
+              query={{ page: pagination.currentPage + 1 }}
             >
               <span className="sr-only">Next</span>
             </LinkWrapper>
