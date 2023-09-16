@@ -6,6 +6,7 @@ import PageNavigator from "../components/games/PageNavigator"
 import Layout from "../components/layout/Layout"
 import { useGamesQuery } from "../graphql/generated"
 import usePage from "../hooks/usePage"
+import Pagination from "../components/atoms/Pagination"
 
 export default function Home() {
   const router = useRouter()
@@ -53,6 +54,7 @@ export default function Home() {
               </div>
 
               <PageNavigator pageInfo={data.gamesConnection.pageInfo} router={router} />
+              <Pagination pageMetaData={{}} pathname="/" />
             </section>
           )}
         </div>
