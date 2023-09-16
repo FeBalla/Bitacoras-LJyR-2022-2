@@ -1,7 +1,7 @@
 import Head from "next/head"
-import LoadingSpinner from "~/components/UIBlocks/LoadingSpinner"
-import Layout from "~/components/UIBlocks/Layout"
 import ReflectionCard from "~/components/ReflectionCard"
+import Layout from "~/components/UIBlocks/Layout"
+import LoadingSpinner from "~/components/UIBlocks/LoadingSpinner"
 import { useReflectionsQuery } from "~/graphql/generated"
 
 const Home = () => {

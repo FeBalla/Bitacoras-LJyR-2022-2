@@ -1,6 +1,6 @@
 import Link from "next/link"
 import type { ParsedUrlQueryInput } from "querystring"
-import type { FC, ReactNode } from "react"
+import type { ReactNode } from "react"
 
 type LinkWrapperProps = {
   href?: string
@@ -10,13 +10,13 @@ type LinkWrapperProps = {
   className?: string
 }
 
-const LinkWrapper: FC<LinkWrapperProps> = ({
+const LinkWrapper = ({
   href = "#",
   query,
   children,
   isDisabled = false,
   className = "",
-}) => {
+}: LinkWrapperProps) => {
   return (
     <>
       {isDisabled || href === "#" ? (

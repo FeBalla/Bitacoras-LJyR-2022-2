@@ -43,10 +43,7 @@ const _getPagesToShow = (currentPage: number, totalPages: number): number[] => {
  * query results (i.e. the total number of items).
  * @returns An object with the complete configuration for the component.
  */
-const getPaginationConfig = (
-  page: PageState,
-  gameConnection: ItemConnection
-): PaginationConfig => {
+const getPaginationConfig = (page: PageState, gameConnection: ItemConnection): PaginationConfig => {
   const gamesPerPage = page.itemsPerPage || 6
   const totalItems = gameConnection.aggregate.count
   const totalPages = Math.ceil(totalItems / gamesPerPage)

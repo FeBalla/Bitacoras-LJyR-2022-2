@@ -1,4 +1,3 @@
-import type { FC } from "react"
 import LinkWrapper from "~/components/UIBlocks/LinkWrapper"
 
 type PageButtonProps = {
@@ -7,7 +6,7 @@ type PageButtonProps = {
   isDisabled?: boolean
 }
 
-const PageButton: FC<PageButtonProps> = ({ pageNumber, href, isDisabled = false }) => {
+const PageButton = ({ pageNumber, href, isDisabled = false }: PageButtonProps) => {
   return (
     <LinkWrapper
       className="relative inline-flex items-center border border-gray-300 bg-white 

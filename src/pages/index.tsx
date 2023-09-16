@@ -1,13 +1,13 @@
 import Head from "next/head"
 import { useRouter } from "next/router"
-import LoadingSpinner from "~/components/UIBlocks/LoadingSpinner"
-import Pagination from "~/components/UIBlocks/Pagination"
 import GameCard from "~/components/GameCard"
 import Layout from "~/components/UIBlocks/Layout"
+import LoadingSpinner from "~/components/UIBlocks/LoadingSpinner"
+import Pagination from "~/components/UIBlocks/Pagination"
 import { useGamesQuery } from "~/graphql/generated"
 import usePage from "~/hooks/usePage"
 
-export default function Home() {
+const Home = () => {
   const router = useRouter()
   const page = usePage(router)
 
@@ -56,11 +56,7 @@ export default function Home() {
                 })}
               </div>
 
-              <Pagination
-                page={page}
-                pageMetaData={data.gamesConnection}
-                pathname="/"
-              />
+              <Pagination page={page} pageMetaData={data.gamesConnection} pathname="/" />
             </section>
           )}
         </div>
@@ -68,3 +64,5 @@ export default function Home() {
     </>
   )
 }
+
+export default Home

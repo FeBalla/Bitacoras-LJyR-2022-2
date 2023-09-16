@@ -1,6 +1,6 @@
-import { type ReflectionsQuery } from "~/graphql/generated"
 import DoubleQuotesIcon from "~/components/UIBlocks/DoubleQuotesIcon"
 import ImageWithFallback from "~/components/UIBlocks/ImageWithFallback"
+import { type ReflectionsQuery } from "~/graphql/generated"
 
 type ReflectionCardProps = {
   reflection: ReflectionsQuery["reflections"][number]

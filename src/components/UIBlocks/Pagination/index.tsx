@@ -1,7 +1,7 @@
+import LinkWrapper from "~/components/UIBlocks/LinkWrapper"
 import { GamesQuery } from "~/graphql/generated"
 import { PageState } from "~/types"
 import { getPaginationConfig } from "~/utils/pagination"
-import LinkWrapper from "~/components/UIBlocks/LinkWrapper"
 import CurrentPageButton from "./atoms/CurrentPageButton"
 import PageButton from "./atoms/PageButton"
 
@@ -11,7 +11,7 @@ type PaginationProps = {
   pageMetaData: GamesQuery["gamesConnection"]
 }
 
-export default function Pagination({ pathname, page, pageMetaData }: PaginationProps) {
+const Pagination = ({ pathname, page, pageMetaData }: PaginationProps) => {
   const paginationConfig = getPaginationConfig(page, pageMetaData)
 
   // If there's less than one page, the pagination is an empty component.
@@ -99,3 +99,5 @@ export default function Pagination({ pathname, page, pageMetaData }: PaginationP
     </div>
   )
 }
+
+export default Pagination
