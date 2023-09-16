@@ -1,9 +1,5 @@
-import type { PageInfo, Aggregate } from "../graphql/generated"
-
-type ItemConnection = {
-  pageInfo: PageInfo
-  aggregate: Aggregate
-}
+import { PageInfo } from "../graphql/generated"
+import type { ItemConnection, PageState } from "../types"
 
 type PaginationConfig = {
   currentPage: number
@@ -43,29 +39,29 @@ const _getPagesToShow = (currentPage: number, totalPages: number): number[] => {
 /**
  * Gets a complete configuration for the pagination component based on the
  * current page and the results of the query.
- * @param currentPage An object with the current page configuration.
+ * @param page An object with the current page configuration.
  * @param gameConnection An object with the page meta data based on the
  * query results (i.e. the total number of items).
  * @returns An object with the complete configuration for the component.
  */
 const getPaginationConfig = (
-  currentPage: any,
+  page: PageState,
   gameConnection: ItemConnection
 ): PaginationConfig => {
-  const gamesPerPage = currentPage.itemsPerPage || 6
+  const gamesPerPage = page.itemsPerPage || 6
   const totalItems = gameConnection.aggregate.count
   const totalPages = Math.ceil(totalItems / gamesPerPage)
-  const pagesToShow = _getPagesToShow(currentPage.page, totalPages)
+  const pagesToShow = _getPagesToShow(page.page, totalPages)
 
   return {
-    currentPage: currentPage.page,
-    itemFrom: currentPage.itemsToSkip,
-    itemTo: Math.min(currentPage.itemsToSkip + gamesPerPage, totalItems),
+    currentPage: page.page,
+    itemFrom: page.itemsToSkip,
+    itemTo: Math.min(page.itemsToSkip + gamesPerPage, totalItems),
     itemsPerPage: gamesPerPage,
     totalItems: totalItems,
     totalPages: totalPages,
-    isPreviousDisabled: currentPage.page === 1,
-    isNextDisabled: currentPage.page === totalPages,
+    isPreviousDisabled: page.page === 1,
+    isNextDisabled: page.page === totalPages,
     pagesToShow: pagesToShow,
   }
 }

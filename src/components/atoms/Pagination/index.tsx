@@ -1,5 +1,5 @@
-import { type FC } from "react"
 import { GamesQuery } from "../../../graphql/generated"
+import { PageState } from "../../../types"
 import { getPaginationConfig } from "../../../utils/pagination"
 import LinkWrapper from "../Links/LinkWrapper"
 import CurrentPageButton from "./atoms/CurrentPageButton"
@@ -7,16 +7,12 @@ import PageButton from "./atoms/PageButton"
 
 type PaginationProps = {
   pathname: string
-  currentPage: {
-    page: number
-    itemsPerPage: number
-    itemsToSkip: number
-  }
+  page: PageState
   pageMetaData: GamesQuery["gamesConnection"]
 }
 
-const Pagination: FC<PaginationProps> = ({ pathname, currentPage, pageMetaData }) => {
-  const paginationConfig = getPaginationConfig(currentPage, pageMetaData)
+export default function Pagination({ pathname, page, pageMetaData }: PaginationProps) {
+  const paginationConfig = getPaginationConfig(page, pageMetaData)
 
   // If there's less than one page, the pagination is an empty component.
   if (paginationConfig.totalPages <= 1) {
@@ -103,5 +99,3 @@ const Pagination: FC<PaginationProps> = ({ pathname, currentPage, pageMetaData }
     </div>
   )
 }
-
-export default Pagination

@@ -9,12 +9,12 @@ import usePage from "../hooks/usePage"
 
 export default function Home() {
   const router = useRouter()
-  const currentPage = usePage(router)
+  const page = usePage(router)
 
   const { data, loading, error } = useGamesQuery({
     variables: {
-      first: currentPage.itemsPerPage,
-      skip: currentPage.itemsToSkip,
+      first: page.itemsPerPage,
+      skip: page.itemsToSkip,
     },
   })
 
@@ -45,7 +45,7 @@ export default function Home() {
               Bitácoras - Liderazgo, Juegos y Recreación
             </h1>
 
-            <h4 className="italic">Página {currentPage.page}</h4>
+            <h4 className="italic">Página {page.page}</h4>
           </div>
 
           {data && (
@@ -57,7 +57,7 @@ export default function Home() {
               </div>
 
               <Pagination
-                currentPage={currentPage}
+                page={page}
                 pageMetaData={data.gamesConnection}
                 pathname="/"
               />
