@@ -1,6 +1,6 @@
+import router from "next/router"
 import { useEffect, useState } from "react"
 import { GamesQuery } from "../graphql/generated"
-import router from "next/router"
 
 type GameConnection = GamesQuery["gamesConnection"]
 
@@ -59,15 +59,14 @@ const usePagination = (pageMetaData: GameConnection): UsePaginationState => {
     const pagesToShow = getPagesToShow(currentPage, totalPages)
     setCurrentGamesToSkip(gamesToSkip)
     setPagesToShow(pagesToShow)
-  
   }, [router, currentPage, gamesPerPage, pageMetaData])
-  
+
   return {
     itemFrom: (currentPage - 1) * gamesPerPage + 1,
     itemTo: Math.min(currentPage * gamesPerPage, totalItems),
     totalItems: totalItems,
     isPreviousDisabled: currentPage === 1,
-    isNextDisabled: false,//currentPage === pageMetaData.totalPages,
+    isNextDisabled: false, //currentPage === pageMetaData.totalPages,
     currentPage: currentPage,
     gamesToSkip: currentGamesToSkip,
     itemsPerPage: gamesPerPage,

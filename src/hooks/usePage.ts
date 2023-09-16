@@ -1,25 +1,31 @@
 import { NextRouter } from "next/router"
 import { useEffect, useState } from "react"
 
-const usePage = (router: NextRouter) => {
-  const gamesPerPage: number = Number(process.env.NEXT_PUBLIC_GAMES_PER_PAGE) || 6
-  const [currentPage, setCurrentPage] = useState(1)
-  const [currentGamesToSkip, setCurrentGamesToSkip] = useState(0)
+type PageState = {
+  page: number
+  itemsPerPage: number
+  itemsToSkip: number
+}
+
+const usePage = (router: NextRouter): PageState => {
+  const itemsPerPage = Number(process.env.NEXT_PUBLIC_GAMES_PER_PAGE) || 6
+  const [page, setPage] = useState(1)
+  const [itemsToSkip, setItemsToSkip] = useState(0)
 
   useEffect(() => {
-    const { page: queryPage } = router.query
-    const page = Number(queryPage)
+    const queryPage = Number(router.query.page)
 
-    if (isNaN(page)) {
-      setCurrentPage(1)
+    if (isNaN(queryPage)) {
+      setPage(1)
     } else {
-      setCurrentPage(page)
+      setPage(queryPage)
     }
-    const gamesToSkip = gamesPerPage * (currentPage - 1)
-    setCurrentGamesToSkip(gamesToSkip)
-  }, [router, currentPage, gamesPerPage])
 
-  return [currentPage, gamesPerPage, currentGamesToSkip]
+    const itemsToSkip = itemsPerPage * (page - 1)
+    setItemsToSkip(itemsToSkip)
+  }, [router, page, itemsPerPage])
+
+  return { page, itemsPerPage, itemsToSkip }
 }
 
 export default usePage

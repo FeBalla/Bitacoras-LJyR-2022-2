@@ -1,18 +1,21 @@
 import Head from "next/head"
 import { useRouter } from "next/router"
 import LoadingSpinner from "../components/atoms/LoadingSpinner"
+import Pagination from "../components/atoms/Pagination"
 import GameCard from "../components/games/GameCard"
-import PageNavigator from "../components/games/PageNavigator"
 import Layout from "../components/layout/Layout"
 import { useGamesQuery } from "../graphql/generated"
 import usePage from "../hooks/usePage"
-import Pagination from "../components/atoms/Pagination"
 
 export default function Home() {
   const router = useRouter()
-  const [currentPage, gamesPerPage, currentGamesToSkip] = usePage(router)
+  const currentPage = usePage(router)
+
   const { data, loading, error } = useGamesQuery({
-    variables: { first: gamesPerPage, skip: currentGamesToSkip },
+    variables: {
+      first: currentPage.itemsPerPage,
+      skip: currentPage.itemsToSkip,
+    },
   })
 
   if (loading) {
@@ -26,8 +29,6 @@ export default function Home() {
   if (error) {
     return <h2>Algo salió mal</h2>
   }
-
-  console.log(data)
 
   return (
     <>
@@ -44,7 +45,7 @@ export default function Home() {
               Bitácoras - Liderazgo, Juegos y Recreación
             </h1>
 
-            <h4 className="italic">Página {currentPage}</h4>
+            <h4 className="italic">Página {currentPage.page}</h4>
           </div>
 
           {data && (
@@ -55,7 +56,6 @@ export default function Home() {
                 })}
               </div>
 
-              {/* <PageNavigator pageInfo={data.gamesConnection.pageInfo} router={router} /> */}
               <Pagination pageMetaData={data.gamesConnection} pathname="/" />
             </section>
           )}

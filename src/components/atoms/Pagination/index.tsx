@@ -1,9 +1,9 @@
-import CurrentPageButton from "./atoms/CurrentPageButton"
-import LinkWrapper from "../Links/LinkWrapper"
-import PageButton from "./atoms/PageButton"
 import { type FC } from "react"
-import { usePagination } from "../../../hooks/usePagination"
 import { GamesQuery } from "../../../graphql/generated"
+import { usePagination } from "../../../hooks/usePagination"
+import LinkWrapper from "../Links/LinkWrapper"
+import CurrentPageButton from "./atoms/CurrentPageButton"
+import PageButton from "./atoms/PageButton"
 
 type PaginationProps = {
   pathname: string
@@ -12,7 +12,7 @@ type PaginationProps = {
 
 const Pagination: FC<PaginationProps> = ({ pathname, pageMetaData }) => {
   const pagination = usePagination(pageMetaData)
-  
+
   // If there's less than one page, the pagination is an empty component.
   if (pagination.totalPages <= 1) {
     return <></>
