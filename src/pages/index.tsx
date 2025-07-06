@@ -7,7 +7,7 @@ import Pagination from "~/components/UIBlocks/Pagination"
 import { useGamesQuery } from "~/graphql/generated"
 import usePage from "~/hooks/usePage"
 
-const Home = () => {
+export default function Home() {
   const router = useRouter()
   const page = usePage(router)
 
@@ -64,5 +64,3 @@ const Home = () => {
     </>
   )
 }
-
-export default Home
