@@ -1,5 +1,5 @@
 import Footer from "./atoms/Footer"
-import Header from "./atoms/Header"
+import { Header } from "./atoms/Header"
 
 type LayoutProps = {
   children: JSX.Element
