@@ -1,5 +1,6 @@
 import { ExternalLink } from "~/components/UIBlocks/ExternalLink"
 import { GitHubIcon } from "~/components/UIBlocks/GitHubIcon"
+import { LudolabLogo } from "../../LudoLabLogo"
 
 export function Header() {
   return (
@@ -7,9 +8,7 @@ export function Header() {
       className="sticky top-0 z-50 flex w-full justify-between bg-gray-50 px-5 py-3
       shadow-md items-center md:px-16 md:py-5"
     >
-      <span className="mr-5 text-2xl font-bold text-gray-800 md:text-3xl">
-        ludolab
-      </span>
+      <LudolabLogo />
 
       <div className="flex items-center gap-4">
         <div>
