@@ -1,15 +1,31 @@
-import "~/styles/globals.css"
+import { ApolloClientProvider } from "~/components/ApolloClientProvider"
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
+import "~/globals.css"
+import { Layout } from "~/components/ui-blocks/Layout"
 import React from "react"
 
-export const metadata = {
-  title: "ludolab | Lista de juegos",
-  description: "Conoce juegos y dinámicas de grupo para hacer con amigos",
+const inter = Inter({ subsets: ["latin"] })
+
+export const metadata: Metadata = {
+  title: "Lista de Juegos",
+  description: "Aplicación para explorar juegos",
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="es">
-      <body>{children}</body>
+      <body className={inter.className}>
+        <ApolloClientProvider>
+          <Layout>
+            {children}
+          </Layout>
+        </ApolloClientProvider>
+      </body>
     </html>
   )
 }
