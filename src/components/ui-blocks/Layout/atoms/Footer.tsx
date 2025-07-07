@@ -1,4 +1,4 @@
-import { ExternalLink } from "~/components/UIBlocks/ExternalLink"
+import { ExternalLink } from "~/components/ui-blocks/ExternalLink"
 
 export function Footer() {
   const GITHUB_BASE_URL = "https://github.com"

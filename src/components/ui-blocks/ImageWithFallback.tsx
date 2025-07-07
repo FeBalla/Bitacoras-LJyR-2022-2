@@ -6,13 +6,13 @@ type ImageWithFallbackProps = {
   style?: string
   alt?: string
 }
-const fallbackSrc = "/image_placeholder.jpg"
+const IMG_FALLBACK_SRC = "/image_placeholder.jpg"
 
-const ImageWithFallback = ({ src, alt, style }: ImageWithFallbackProps) => {
-  const [imgSrc, setImgSrc] = useState(fallbackSrc)
+export function ImageWithFallback({ src, alt, style }: ImageWithFallbackProps) {
+  const [imgSrc, setImgSrc] = useState(IMG_FALLBACK_SRC)
 
   useEffect(() => {
-    setImgSrc(src || fallbackSrc)
+    setImgSrc(src || IMG_FALLBACK_SRC)
   }, [src])
 
   return (
@@ -22,10 +22,8 @@ const ImageWithFallback = ({ src, alt, style }: ImageWithFallbackProps) => {
       alt={alt || "imagen"}
       className={`bg-gray-100 object-cover ${style || ""}`}
       onError={() => {
-        setImgSrc(fallbackSrc)
+        setImgSrc(IMG_FALLBACK_SRC)
       }}
     />
   )
 }
-
-export default ImageWithFallback

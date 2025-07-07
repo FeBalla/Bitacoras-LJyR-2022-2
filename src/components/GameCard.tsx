@@ -1,11 +1,11 @@
-import ImageWithFallback from "~/components/UIBlocks/ImageWithFallback"
+import { ImageWithFallback } from "~/components/ui-blocks/ImageWithFallback"
 import { type GamesQuery } from "~/graphql/generated"
 
 type GameCardProps = {
   game: GamesQuery["games"][number]
 }
 
-const GameCard = ({ game }: GameCardProps) => {
+export function GameCard({ game }: GameCardProps) {
   return (
     <div className="flex flex-col gap-2 rounded-md border p-3">
       <div className="text-left">
@@ -28,5 +28,3 @@ const GameCard = ({ game }: GameCardProps) => {
     </div>
   )
 }
-
-export default GameCard

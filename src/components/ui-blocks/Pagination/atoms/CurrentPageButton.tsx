@@ -1,10 +1,10 @@
-import LinkWrapper from "~/components/UIBlocks/LinkWrapper"
+import { LinkWrapper } from "~/components/ui-blocks/LinkWrapper"
 
 type CurrentPageButtonProps = {
   pageNumber: number
 }
 
-const CurrentPageButton = ({ pageNumber }: CurrentPageButtonProps) => {
+export function CurrentPageButton({ pageNumber }: CurrentPageButtonProps) {
   return (
     <LinkWrapper
       aria-current="page"
@@ -16,5 +16,3 @@ const CurrentPageButton = ({ pageNumber }: CurrentPageButtonProps) => {
     </LinkWrapper>
   )
 }
-
-export default CurrentPageButton

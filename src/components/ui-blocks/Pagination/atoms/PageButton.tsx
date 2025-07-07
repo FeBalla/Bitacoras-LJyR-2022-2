@@ -1,4 +1,4 @@
-import LinkWrapper from "~/components/UIBlocks/LinkWrapper"
+import { LinkWrapper } from "~/components/ui-blocks/LinkWrapper"
 
 type PageButtonProps = {
   pageNumber: number
@@ -6,7 +6,7 @@ type PageButtonProps = {
   isDisabled?: boolean
 }
 
-const PageButton = ({ pageNumber, href, isDisabled = false }: PageButtonProps) => {
+export function PageButton({ pageNumber, href, isDisabled = false }: PageButtonProps) {
   return (
     <LinkWrapper
       className="border-gray-30 relative inline-flex items-center border
@@ -19,5 +19,3 @@ const PageButton = ({ pageNumber, href, isDisabled = false }: PageButtonProps) =
     </LinkWrapper>
   )
 }
-
-export default PageButton
