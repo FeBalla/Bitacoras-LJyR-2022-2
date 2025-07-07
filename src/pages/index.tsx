@@ -33,17 +33,18 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Bitácoras - Liderazgo, Juegos y Recreación</title>
-        <meta name="description" content="Bitácoras - Liderazgo, Juegos y Recreación" />
+        <title>ludolab | Lista de juegos</title>
+        <meta
+          name="description"
+          content="Conoce juegos y dinámicas de grupo para hacer con amigos"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Layout>
         <div className="flex flex-col items-center justify-center p-4 sm:p-5 lg:px-20">
           <div className="my-5 flex flex-col gap-2 text-center">
-            <h1 className="text-2xl font-semibold text-gray-900 lg:text-3xl">
-              Bitácoras - Liderazgo, Juegos y Recreación
-            </h1>
+            <h1 className="text-2xl font-semibold text-gray-900 lg:text-3xl">Lista de juegos</h1>
 
             <h4 className="italic">Página {page.page}</h4>
           </div>
