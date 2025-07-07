@@ -1,27 +1,26 @@
-import Link from "next/link"
-import { useRouter } from "next/router"
+import { ExternalLink } from "~/components/UIBlocks/ExternalLink"
+import { GitHubIcon } from "~/components/UIBlocks/GitHubIcon"
+import { LudolabLogo } from "../../LudoLabLogo"
 
-const HEader = () => {
-  const router = useRouter()
+export function Header() {
   return (
     <header
-      className="sticky top-0 z-50 flex w-full justify-center bg-gray-50 px-5 py-3 shadow-md 
-      md:justify-end md:px-16 md:py-5"
+      className="sticky top-0 z-50 flex w-full justify-between bg-gray-50 px-5 py-3
+      shadow-md items-center md:px-16 md:py-5"
     >
-      <nav className="flex gap-5">
-        <Link href="/" className={router.pathname === "/" ? "font-semibold" : ""}>
-          Bitácoras
-        </Link>
+      <LudolabLogo />
 
-        <Link
-          href="/reflexiones"
-          className={router.pathname === "/reflexiones" ? "font-semibold" : ""}
-        >
-          Reflexiones
-        </Link>
-      </nav>
+      <div className="flex items-center gap-4">
+        <div>
+          <ExternalLink
+            href={process.env.NEXT_PUBLIC_GITHUB_REPO_URL || ""}
+            className="text-gray-600 hover:text-gray-800 flex items-center gap-1"
+          >
+            <GitHubIcon />
+            GitHub
+          </ExternalLink>
+        </div>
+      </div>
     </header>
   )
 }
-
-export default HEader
