@@ -1,7 +1,7 @@
 import { ApolloClientProvider } from "~/components/ApolloClientProvider"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import "~/globals.css"
+import "./globals.css"
 import { Layout } from "~/components/ui-blocks/Layout"
 import React from "react"
 
@@ -12,19 +12,13 @@ export const metadata: Metadata = {
   description: "Aplicación para explorar juegos",
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
       <body className={inter.className}>
-        <ApolloClientProvider>
-          <Layout>
-            {children}
-          </Layout>
-        </ApolloClientProvider>
+        <Layout>
+          <ApolloClientProvider>{children}</ApolloClientProvider>
+        </Layout>
       </body>
     </html>
   )
