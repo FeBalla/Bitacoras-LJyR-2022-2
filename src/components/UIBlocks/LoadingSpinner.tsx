@@ -1,4 +1,4 @@
-const LoadingSpinner = () => {
+export function LoadingSpinner() {
   return (
     <div role="status">
       <svg
@@ -31,5 +31,3 @@ const LoadingSpinner = () => {
     </div>
   )
 }
-
-export default LoadingSpinner

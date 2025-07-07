@@ -10,13 +10,13 @@ type LinkWrapperProps = {
   className?: string
 }
 
-const LinkWrapper = ({
+export function LinkWrapper({
   href = "#",
   query,
   children,
   isDisabled = false,
   className = "",
-}: LinkWrapperProps) => {
+}: LinkWrapperProps) {
   return (
     <>
       {isDisabled || href === "#" ? (
@@ -31,5 +31,3 @@ const LinkWrapper = ({
     </>
   )
 }
-
-export default LinkWrapper

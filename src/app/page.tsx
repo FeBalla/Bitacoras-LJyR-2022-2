@@ -1,11 +1,11 @@
 "use client"
-import ApolloClientProvider from "~/components/ApolloClientProvider"
-import GameCard from "~/components/GameCard"
+import { ApolloClientProvider } from "~/components/ApolloClientProvider"
+import { GameCard } from "~/components/GameCard"
 import { Layout } from "~/components/UIBlocks/Layout"
-import LoadingSpinner from "~/components/UIBlocks/LoadingSpinner"
-import Pagination from "~/components/UIBlocks/Pagination"
+import { LoadingSpinner } from "~/components/UIBlocks/LoadingSpinner"
+import { Pagination } from "~/components/UIBlocks/Pagination"
 import { useGamesQuery } from "~/graphql/generated"
-import usePage from "~/hooks/usePage"
+import { usePage } from "~/hooks/usePage"
 import { useSearchParams } from "next/navigation"
 
 function HomeContent() {

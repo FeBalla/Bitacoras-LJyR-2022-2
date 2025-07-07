@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { PageState } from "~/types"
 
-const usePage = (searchParams: URLSearchParams): PageState => {
+export function usePage(searchParams: URLSearchParams): PageState {
   const itemsPerPage = Number(process.env.NEXT_PUBLIC_GAMES_PER_PAGE) || 6
   const [page, setPage] = useState(1)
   const [itemsToSkip, setItemsToSkip] = useState(0)
@@ -21,5 +21,3 @@ const usePage = (searchParams: URLSearchParams): PageState => {
 
   return { page, itemsPerPage, itemsToSkip }
 }
-
-export default usePage

@@ -1,10 +1,10 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "~/components/icons"
-import LinkWrapper from "~/components/UIBlocks/LinkWrapper"
+import { LinkWrapper } from "~/components/UIBlocks/LinkWrapper"
 import { GamesQuery } from "~/graphql/generated"
 import { PageState } from "~/types"
 import { getPaginationConfig } from "~/utils/pagination"
-import CurrentPageButton from "./atoms/CurrentPageButton"
-import PageButton from "./atoms/PageButton"
+import { CurrentPageButton } from "./atoms/CurrentPageButton"
+import { PageButton } from "./atoms/PageButton"
 
 type PaginationProps = {
   pathname: string
@@ -12,7 +12,7 @@ type PaginationProps = {
   pageMetaData: GamesQuery["gamesConnection"]
 }
 
-const Pagination = ({ pathname, page, pageMetaData }: PaginationProps) => {
+export function Pagination({ pathname, page, pageMetaData }: PaginationProps) {
   const paginationConfig = getPaginationConfig(page, pageMetaData)
 
   // If there's less than one page, the pagination is an empty component.
@@ -102,5 +102,3 @@ const Pagination = ({ pathname, page, pageMetaData }: PaginationProps) => {
     </div>
   )
 }
-
-export default Pagination

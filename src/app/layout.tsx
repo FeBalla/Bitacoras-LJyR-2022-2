@@ -1,4 +1,5 @@
 import "~/styles/globals.css"
+import React from "react"
 
 export const metadata = {
   title: "ludolab | Lista de juegos",
@@ -8,9 +9,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
-      <body>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   )
 }
