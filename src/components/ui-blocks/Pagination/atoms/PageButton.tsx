@@ -1,4 +1,4 @@
-import { LinkWrapper } from "~/components/UIBlocks/LinkWrapper"
+import { LinkWrapper } from "~/components/ui-blocks/LinkWrapper"
 
 type PageButtonProps = {
   pageNumber: number

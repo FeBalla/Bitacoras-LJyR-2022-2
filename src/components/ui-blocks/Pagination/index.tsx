@@ -1,5 +1,5 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "~/components/icons"
-import { LinkWrapper } from "~/components/UIBlocks/LinkWrapper"
+import { LinkWrapper } from "~/components/ui-blocks/LinkWrapper"
 import { GamesQuery } from "~/graphql/generated"
 import { PageState } from "~/types"
 import { getPaginationConfig } from "~/utils/pagination"

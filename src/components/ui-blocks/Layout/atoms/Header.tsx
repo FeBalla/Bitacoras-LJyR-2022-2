@@ -1,5 +1,5 @@
-import { ExternalLink } from "~/components/UIBlocks/ExternalLink"
-import { GitHubIcon } from "~/components/UIBlocks/GitHubIcon"
+import { ExternalLink } from "~/components/ui-blocks/ExternalLink"
+import { GitHubIcon } from "~/components/ui-blocks/GitHubIcon"
 import { LudolabLogo } from "../../LudoLabLogo"
 
 export function Header() {

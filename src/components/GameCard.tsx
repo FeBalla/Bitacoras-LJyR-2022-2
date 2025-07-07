@@ -1,4 +1,4 @@
-import { ImageWithFallback } from "~/components/UIBlocks/ImageWithFallback"
+import { ImageWithFallback } from "~/components/ui-blocks/ImageWithFallback"
 import { type GamesQuery } from "~/graphql/generated"
 
 type GameCardProps = {
