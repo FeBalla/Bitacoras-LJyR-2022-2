@@ -7,7 +7,10 @@ type GameCardProps = {
 
 export function GameCard({ game }: GameCardProps) {
   return (
-    <div className="flex flex-col gap-2 rounded-md border p-3">
+    <div
+      className="flex flex-col gap-2 rounded-lg border px-5 py-4 bg-white shadow-md
+      bg-opacity-70"
+    >
       <div className="text-left">
         <h2 className="text-2xl font-semibold text-gray-800">{game.name}</h2>
       </div>
