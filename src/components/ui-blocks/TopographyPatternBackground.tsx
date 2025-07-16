@@ -973,7 +973,7 @@ export function TopographyPatternBackground({
 
   return (
     <div
-      className="bg-repeat bg-[length:650px_650px] min-h-screen z-0"
+      className="bg-repeat bg-[length:650px_650px] min-h-screen z-0 w-full"
       style={{
         backgroundImage: `url("data:image/svg+xml,${encodeURIComponent(SVG)}")`,
       }}
