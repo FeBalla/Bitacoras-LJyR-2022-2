@@ -5,8 +5,8 @@ export function Footer() {
 
   return (
     <footer
-      className="flex gap-1 bg-gray-50 py-5 px-2 justify-center
-      items-center text-xs md:text-sm"
+      className="flex gap-1 bg-gray-50 py-5 px-2 justify-center items-center text-xs
+      md:text-sm bg-opacity-40 backdrop-blur-sm"
     >
       <span>👨‍💻 Desarrollado por</span>
 
