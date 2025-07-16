@@ -5,8 +5,8 @@ import { LudolabLogo } from "../../LudoLabLogo"
 export function Header() {
   return (
     <header
-      className="sticky top-0 z-50 flex w-full justify-between bg-gray-50 px-5 py-3
-      shadow-md items-center md:px-16 md:py-5 bg-opacity-70 backdrop-blur-sm"
+      className="z-50 flex w-full justify-between bg-gray-50 px-5 py-3 shadow-md items-center
+      md:px-16 md:py-5 bg-opacity-70 backdrop-blur-sm"
     >
       <LudolabLogo />
 
