@@ -1,6 +1,6 @@
+import Image from "next/image"
 import { ExternalLink } from "~/components/ui-blocks/ExternalLink"
-import { GitHubIcon } from "~/components/ui-blocks/GitHubIcon"
-import { LudolabLogo } from "../../LudoLabLogo"
+import { LudolabLogo } from "~/components/ui-blocks/LudoLabLogo"
 
 export function Header() {
   return (
@@ -16,7 +16,7 @@ export function Header() {
             href={process.env.NEXT_PUBLIC_GITHUB_REPO_URL || ""}
             className="text-gray-600 hover:text-gray-800 flex items-center gap-1"
           >
-            <GitHubIcon />
+            <Image src="/github_logo.svg" alt="GitHub Logo" width={24} height={24} />
             GitHub
           </ExternalLink>
         </div>

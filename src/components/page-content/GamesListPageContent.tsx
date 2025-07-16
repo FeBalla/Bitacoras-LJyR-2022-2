@@ -43,7 +43,7 @@ export function GamesListPageContent() {
   return (
     <div className="flex flex-col p-2 sm:p-5 lg:px-20 w-full">
       <div className="my-5 flex flex-col gap-2 text-center">
-        <h1 className="text-2xl font-semibold text-gray-900 lg:text-3xl">Lista de juegos</h1>
+        <h1 className="text-2xl font-semibold text-gray-900 lg:text-3xl">Lista de Juegos</h1>
         <h4 className="italic">Página {pagination.currentPage}</h4>
       </div>
 
