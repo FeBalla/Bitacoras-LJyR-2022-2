@@ -1,14 +1,15 @@
 import Image from "next/image"
 import { useEffect, useState } from "react"
 
-type ImageWithFallbackProps = {
-  src?: string
-  style?: string
-  alt?: string
-}
 const IMG_FALLBACK_SRC = "/image_placeholder.jpg"
 
-export function ImageWithFallback({ src, alt, style }: ImageWithFallbackProps) {
+type ImageWithFallbackProps = {
+  src?: string
+  alt?: string
+  className?: string
+}
+
+export function ImageWithFallback({ src, alt, className }: ImageWithFallbackProps) {
   const [imgSrc, setImgSrc] = useState(IMG_FALLBACK_SRC)
 
   useEffect(() => {
@@ -20,7 +21,7 @@ export function ImageWithFallback({ src, alt, style }: ImageWithFallbackProps) {
       src={imgSrc}
       fill
       alt={alt || "imagen"}
-      className={`bg-gray-100 object-cover ${style || ""}`}
+      className={`bg-gray-100 object-cover ${className || ""}`}
       onError={() => {
         setImgSrc(IMG_FALLBACK_SRC)
       }}
